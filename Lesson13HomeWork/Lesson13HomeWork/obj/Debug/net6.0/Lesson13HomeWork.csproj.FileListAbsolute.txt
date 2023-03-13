@@ -1,0 +1,15 @@
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\bin\Debug\net6.0\Lesson13HomeWork.exe
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\bin\Debug\net6.0\Lesson13HomeWork.deps.json
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\bin\Debug\net6.0\Lesson13HomeWork.runtimeconfig.json
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\bin\Debug\net6.0\Lesson13HomeWork.dll
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\bin\Debug\net6.0\Lesson13HomeWork.pdb
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\Lesson13HomeWork.csproj.AssemblyReference.cache
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\Lesson13HomeWork.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\Lesson13HomeWork.AssemblyInfoInputs.cache
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\Lesson13HomeWork.AssemblyInfo.cs
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\Lesson13HomeWork.csproj.CoreCompileInputs.cache
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\Lesson13HomeWork.dll
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\refint\Lesson13HomeWork.dll
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\Lesson13HomeWork.pdb
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\Lesson13HomeWork.genruntimeconfig.cache
+D:\Git repositories\HomeWork\Lesson13HomeWork\Lesson13HomeWork\obj\Debug\net6.0\ref\Lesson13HomeWork.dll
