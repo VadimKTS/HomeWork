@@ -73,11 +73,11 @@ namespace Lesson13HomeWork
             using (var fs = new FileStream("Lesson13HW.json", FileMode.OpenOrCreate))
             {
                 SuperHero person = JsonSerializer.Deserialize<SuperHero>(fs);
-                Console.WriteLine($"SquadName: {person?.squadName}  HomeTown: {person?.homeTown}");
-                Console.WriteLine($"Formed: {person?.formed}  SecretBase: {person?.secretBase}");
-                Console.WriteLine($"Active: {person?.active}  Members Name: {person?.members[0].name}");
-                Console.WriteLine($"Members Age: {person?.members[0].age}  Members SecretIdentity: {person?.members[0].secretIdentity}");
-                Console.WriteLine($"Members powers: {person?.members[0].powers[0]}, {person?.members[0].powers[1]}, {person?.members[0].powers[2]}"); 
+                Console.WriteLine($"SquadName: {person?.SquadName}  HomeTown: {person?.HomeTown}");
+                Console.WriteLine($"Formed: {person?.Formed}  SecretBase: {person?.SecretBase}");
+                Console.WriteLine($"Active: {person?.Active}  Members Name: {person?.Members[0].Name}");
+                Console.WriteLine($"Members Age: {person?.Members[0].Age}  Members SecretIdentity: {person?.Members[0].SecretIdentity}");
+                Console.WriteLine($"Members powers: {person?.Members[0].Powers[0]}, {person?.Members[0].Powers[1]}, {person?.Members[0].Powers[2]}"); 
             }
 
 

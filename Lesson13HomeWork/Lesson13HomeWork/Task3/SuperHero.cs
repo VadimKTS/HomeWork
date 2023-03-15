@@ -1,12 +1,20 @@
-﻿namespace Lesson13HomeWork.Task3
+﻿using System.Text.Json.Serialization;
+
+namespace Lesson13HomeWork.Task3
 {
     internal class SuperHero
     {
-        public string squadName { get; set; }
-        public string homeTown { get; set; }
-        public int formed { get; set; }
-        public string secretBase { get; set; }
-        public bool active { get; set; }
-        public Members[] members { get; set; }
+        [JsonPropertyName("squadName")]
+        public string SquadName { get; set; }
+        [JsonPropertyName("homeTown")]
+        public string HomeTown { get; set; }
+        [JsonPropertyName("formed")]
+        public int Formed { get; set; }
+        [JsonPropertyName("secretBase")]
+        public string SecretBase { get; set; }
+        [JsonPropertyName("active")]
+        public bool Active { get; set; }
+        [JsonPropertyName("members")]
+        public Member[] Members { get; set; }
     }
 }
