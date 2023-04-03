@@ -1,0 +1,71 @@
+body {
+    font-family: sans-serif;
+    font-size: 40px;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+H1 {
+    color: #060681;
+    font-size: 200%;
+    font-family: Arial, Verdana, sans-serif;
+    text-align: center;
+  }
+  P {
+    padding-left: 40px;
+    width: auto;
+    
+  }
+  /* div {
+    color: #8e0a0a;
+    font-size: x-small;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: right;
+    text-transform: uppercase;
+    text-rendering: geometricPrecision;
+    width: 200px;
+  } */
+  
+  .container_flex {
+    display : flex;
+    height : 10vh;
+    flex-direction: row-reverse;
+    justify-content : space-around;
+    align-items : center;
+ }
+
+ .container_grid {
+    display: grid;
+    height: 8vh;
+    gap: 20px;
+    grid-template-columns: 200px auto 100px;
+
+    grid-template-areas:
+    "A A A A   A A A A   A A A A"
+    "B B B B   B B B B   B B C C"
+    "B B B B   B B B B   B B C C";
+
+ }
+ .box-1 {
+    grid-area: A;
+  }
+  .box-2 {
+    grid-area: B;
+  }
+  .box-3 {
+    grid-area: C;
+  }
+ 
+ [class ^="box-"]{
+     width: 140px;
+     height: 140px;
+     background-color: skyblue;
+     border: 2px solid black;
+
+     display: grid;
+     place-items: center;
+     
+ 
+ /* // To view the letter better */
+     font-size: 65px;
+ }

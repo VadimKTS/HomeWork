@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML>
+<head>
+	<meta name="description" content="Сайт об HTML и создании сайтов">
+	<meta name="keywords" content="HTML, META, метатег, тег, поисковая система">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Моя первая Веб-страница</title>
+	<link rel="stylesheet" href="myfile.css"> <!-- добавление файла со стилем в формате .css -->
+	<style>
+		H2 { 
+		 font-size: 120%; 
+		 font-family: Verdana, Arial, Helvetica, sans-serif; 
+		 font-style: italic;
+		 text-align: left;
+		 color: #333366; 
+		}
+	   </style>
+</head>
+<body>
+<h1>Заголовок моей страницы</h1>
+<h2>Заголовок h2 </h2>
+  <!-- Комментарий -->
+  <p>Первый абзац.</p>
+  <div class="container_flex">
+    <div class="box-1"> A_flex </div>
+    <div class="box-2"> B_flex </div>
+    <div class="box-3"> C_flex </div>
+</div>
+<div class="container_grid">
+	<div class="box-1"> A_grid </div>
+	<div class="box-2"> B_grid </div>
+	<div class="box-3"> C_grid</div>
+  </div>
+  <p>Второй абзац.</p>
+  <p>Еще один абзац.</p>
+  <h2>Второй заголовок</h2>
+  <blockquote>Выделение длинных цитат внутри документа</blockquote>
+  <div align=15> относится к универсальным блочным контейнерам и применяется в тех случаях, где нужны блочные элементы без дополнительных свойств. Также с помощью тега </div>
+  <hr width=1000>
+  <pre> 		Задает блок предварительно <a href="URL", title="Посмотри на меня">форматированного текста</a>. Такой текст отображается обычно моноширинным шрифтом и со всеми пробелами между словами. 
+	В HTML любое количество пробелов <em>идущих в коде подряд на веб-странице</em> показывается как один. 
+	Тег <a name="top">...pre</a> позволяет обойти эту особенность и отображать текст как требуется разработчику.</pre>
+	
+	<p> <strong>Это STRONG</strong> <sub> Нижний индекс</sub> <sup>Верхний индекс</sup> </p>
+	<p><del> используется для выделения текста, который был удален в новой версии документа. 
+	Подобное форматирование позволяет отследить, какие изменения в тексте документа были сделаны. 
+	Браузеры обычно помечают текст в контейнере <del></p>
+	<p><ins> предназначен для акцентирования вновь добавленного текста и обычно применяется наряду с тегом del. Браузеры помечают содержимое контейнера </ins></p>
+	<p><ol>
+		<li>элемент нумерованного списка</li>
+		<li>элемент нумерованного списка</li>
+	</ol></p>
+	<p><ul>
+		<li>элемент нумерованного списка</li>
+		<li>элемент нумерованного списка</li>
+	</ul></p>
+	
+	<p> <table border=3>
+			<tr> 
+				<td >1</td> 
+				<td >3</td>
+				<td >5</td>
+			</tr> 
+			<tr > 
+				<td >2</td> 
+				<td >4</td>
+				<td >6</td>
+			</tr> 
+		</table>
+	</p>
+	
+	
+	<p><a href="#top">Вернуться к тексту</a></p>
+</body>
+
+<frameset rows="80,*" cols="*">
+   <frame src="Example2.html" name="Example2" scrolling="no" noresize>
+   <frameset cols="80,*">
+     <frame src="forBegin.html" name="mainFrame" scrolling="no" noresize>
+   </frameset>
+ </frameset>
+ 
+ 
+<HTML>
