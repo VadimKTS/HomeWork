@@ -1,0 +1,35 @@
+﻿@using Lesson23HomeWork.Models.EFDto_Lesson23HomeWork;
+@model List<Book>
+@{
+    ViewData["Title"] = "Books";
+}
+<h1>@ViewData["Title"]</h1>
+<h2>Таблица Book</h2>
+
+<table class="table">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Author</td>
+        <td>Description</td>
+    </tr>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Id</td>
+            <td>@p.Name</td>
+            <td>@p.Author</td>
+            <td>@p.Description</td>
+        </tr>
+        <td>
+            <a asp-action="Edit" asp-controller="Books" asp-route-id="@p.Id">Изменить</a> |
+            <a asp-action="Delete" asp-controller="Books" asp-route-id="@p.Id">Удалить</a>
+        </td>
+    }
+</table>
+
+<a asp-action="Create" asp-controller="Books">Добавить книгу</a>
+
+
+
+

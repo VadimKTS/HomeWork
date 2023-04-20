@@ -1,0 +1,26 @@
+﻿@using Lesson23HomeWork.Models.EFDto_Lesson23HomeWork;
+@model Book
+@{
+    ViewBag.Title = "Добавление книги";
+}
+<form asp-action="create" asp-controller="books">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Название книги</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Author" class="control-label">Автор</label>
+        <input type="text" asp-for="Author" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Описание</label>
+        <input type="text" asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-default" />
+    </div>
+</form>
+
+
+
+
