@@ -3,10 +3,11 @@
 @{
     ViewData["Title"] = "Books";
 }
-<h1>@ViewData["Title"]</h1>
-<h2>Таблица Book</h2>
+<h2>@ViewData["Title"]</h2>
 
 <table class="table">
+    <caption>Таблица Book</caption>
+    <thead>
     <tr>
         <td>Id</td>
         <td>Name</td>
@@ -14,22 +15,30 @@
         <td>Description</td>
         <td>Action</td>
     </tr>
-    @foreach (var p in Model)
-    {
-        <tr>
-            <td>@p.Id</td>
-            <td>@p.Name</td>
-            <td>@p.Author</td>
-            <td>@p.Description</td>
-        <td>
-            <a asp-action="Edit" asp-controller="Books" asp-route-id="@p.Id">Изменить</a> |
-            <a asp-action="Delete" asp-controller="Books" asp-route-id="@p.Id">Удалить</a>
-        </td>
-        </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+        
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                    <td>@p.Author</td>
+                    <td>@p.Description</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Books" asp-route-id="@p.Id">Изменить</a> |
+                    <a asp-action="Delete" asp-controller="Books" asp-route-id="@p.Id">Удалить</a>
+                </td>
+                </tr>
+        
+        }
+    </tbody>
+    <tfoot>
+        <a asp-action="Create" asp-controller="Books">Добавить книгу</a>
+    </tfoot>
 </table>
 
-<a asp-action="Create" asp-controller="Books">Добавить книгу</a>
+
 
 
 
