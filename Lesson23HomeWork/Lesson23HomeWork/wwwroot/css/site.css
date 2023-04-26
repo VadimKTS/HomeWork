@@ -1,0 +1,121 @@
+html {
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    position: relative;
+    min-height: 100%;
+}
+
+header {
+    background-color: darkslategrey;
+    /*background-image: url(BackGround_Books.jpg);*/
+}
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.nav-link {
+    background-color: antiquewhite;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    
+}
+
+header {
+    background-color: darkslategrey;
+    /*background-image: url(BackGround_Books.jpg);*/
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: burlywood;
+    background-image: url(BackGrownd.jpg);
+    background-attachment: scroll;
+    background-position: top;
+    background-size: cover;
+}
+
+h1 {
+    position: center;
+    color: firebrick;
+
+}
+
+h2 {
+    border-bottom: 10px double darkseagreen;
+    color: chocolate;
+}
+
+div {
+    width: 660px;
+    height: 80px;
+}
+
+input[type="text"] {
+    border: 2px solid #000;
+    margin: 0 0 1em 0;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="submit"] {
+    border: 3px solid #333;
+    background-color: #999;
+    border-radius: 5px;
+    padding: 10px 2em;
+    font-weight: bold;
+    color: #fff;
+}
+
+    input[type="submit"]:hover, input[type="submit"]:focus {
+        background-color: darkolivegreen;
+    }
+
+table {
+    border-collapse: collapse;
+    /*убираем пустые промежутки между €чейками*/
+    border: 3px solid grey;
+    /*устанавливаем дл€ таблицы внешнюю границу серого цвета толщиной 3px*/
+}
+
+caption {
+    font-family: 'Rock Salt', cursive;
+    padding: 20px;
+    font-style: italic;
+    caption-side: bottom;
+    color: azure;
+    text-align: left;
+    letter-spacing: 2px;
+}
+
+thead, tfoot {
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+thead td {
+    
+    text-align: center;
+}
+
+tbody td {
+    font-family: 'Rock Salt', cursive;
+    text-align: left;
+}
+
+tfoot th {
+    text-align: right;
+}
+
+th, td {
+    border: 3px solid grey;
+}
+
+footer {
+    background-color: lightsalmon;
+}
+
