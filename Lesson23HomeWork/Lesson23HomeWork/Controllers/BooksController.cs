@@ -66,6 +66,10 @@ namespace Lesson23HomeWork.Controllers
 
         public IActionResult Books()
         {
+
+
+
+
             var books = db.Books.ToList();
             return View(books);
         }
