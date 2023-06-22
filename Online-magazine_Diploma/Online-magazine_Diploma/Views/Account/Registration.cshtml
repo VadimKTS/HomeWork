@@ -1,0 +1,39 @@
+﻿@using Online_magazine_Diploma.Models.AccountModels;
+@model RegistrationViewModel
+
+<h1>Регистрация пользователя</h1>
+
+@using (Html.BeginForm("RegistrationPost", "Account", FormMethod.Post))
+{
+	<div>
+		@Html.LabelFor(m => m.Email, "Email")
+		@Html.TextBoxFor(m => m.Email)
+		@Html.ValidationMessageFor(m => m.Email)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.Name, "Имя")
+		@Html.TextBoxFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.PhoneNumber, "Номер телефона")
+		@Html.TextBoxFor(m => m.PhoneNumber)
+		@Html.ValidationMessageFor(m => m.PhoneNumber)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.Password, "Пароль")
+		@Html.PasswordFor(m => m.Password)
+		@Html.ValidationMessageFor(m => m.Password)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.ConfirmPassword, "Подтверждение пароля")
+		@Html.PasswordFor(m => m.ConfirmPassword)
+		@Html.ValidationMessageFor(m => m.ConfirmPassword)
+	</div>
+
+	<button type="submit"> Создать аккаунт </button>
+}

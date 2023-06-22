@@ -1,0 +1,25 @@
+﻿@using Online_magazine_Diploma.Models.ArticleModels;
+@model ManageArticlesViewModel
+
+<h1> на доработку </h1>
+
+	<div>
+		@Html.LabelFor(m => m.Name, "Название Статьи:")
+		@Html.DisplayFor(m => m.Name)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.Description, "Короткое Описание:")
+		@Html.DisplayFor(m => m.Description)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.Text, "Текст статьи:")
+		@Html.DisplayFor(m => m.Text)
+	</div>
+	<div>
+		<form method="post" asp-action="EditAdminDescriptionPost" asp-controller="Article" asp-route-id="@Model.Id">
+			<label asp-for="AdminDescriptionForEdit"> Замечания: </label>
+			<input asp-for="AdminDescriptionForEdit" />
+			<br />
+			<input type="submit" value=" вернуть автору " />
+		</form>
+	</div>

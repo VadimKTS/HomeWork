@@ -1,0 +1,21 @@
+﻿@using Online_magazine_Diploma.Models.ArticleTypeModels;
+@model AddArticleTypesViewModel
+
+<h1>Новый тип статьи</h1>
+
+@using (Html.BeginForm("AddArticleTypePost", "ArticleType", FormMethod.Post))
+{
+	<div>
+		@Html.LabelFor(m => m.Name, "Имя типа Статьи")
+		@Html.TextBoxFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.Description, "Описание")
+		@Html.TextBoxFor(m => m.Description)
+		@Html.ValidationMessageFor(m => m.Description)
+	</div>
+
+	<button type="submit"> Добавить </button>
+}

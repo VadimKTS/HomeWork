@@ -1,0 +1,25 @@
+﻿@using Online_magazine_Diploma.Models.AdministratorModels;
+@model AddTitelViewModel
+
+<h1>Новый титульник</h1>
+
+@using (Html.BeginForm("AddTitelPost", "Administrator", FormMethod.Post))
+{
+	<div>
+		@Html.LabelFor(m => m.Name, "Громкий ЗАГОЛОВОК титульника:")
+		@Html.TextBoxFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.ImageAddress, "Яркая картинка для титульника(адрес в формате...)")
+		@Html.TextBoxFor(m => m.ImageAddress)
+		@Html.ValidationMessageFor(m => m.ImageAddress)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.ActivateDate, "Дата публикации")
+		@Html.Html5DateRenderingMode @*Дописать!!!!!!!!!!*@
+		@Html.ValidationMessageFor(m => m.ActivateDate)
+	</div>
+	
+	<button type="submit"> Готово </button>
+}

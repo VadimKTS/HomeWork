@@ -1,0 +1,27 @@
+﻿@using Online_magazine_Diploma.DataAccess.Entity;
+@using Online_magazine_Diploma.Models.AdministratorModels;
+@model ManageUsersViewModel
+
+<h1>Редактирование роли пользователя</h1>
+
+	<div>
+		@Html.LabelFor(m => m.Email, "Email:")
+		@Html.DisplayFor(m => m.Email)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.Name, "Имя:")
+		@Html.DisplayFor(m => m.Name)
+	</div>
+
+	<div>
+		<form method="post" asp-action="EditUserRolePost" asp-controller="Administrator" asp-route-id="@Model.Id">
+			<label asp-for="UserRole">Роль:</label>
+			<select asp-for="UserRole" asp-items="Model.UserRoles">
+				<option selected="selected" disabled="disabled">@Model.UserRole</option>
+			</select>
+			<br />
+			<input type="submit" value=" Применить изменения " />
+		</form>
+	</div>
+

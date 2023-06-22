@@ -1,0 +1,44 @@
+﻿
+<h1>Личный кабинет пользователя</h1>
+
+<p>@User.Identity.Name</p>
+
+<div>
+	@if (!User.Identity.IsAuthenticated)
+	{
+		@using (Html.BeginForm("Login", "Account", FormMethod.Get))
+		{
+			<button type="submit"> Авторизоваться </button>
+		}
+		@using (Html.BeginForm("Registration", "Account", FormMethod.Get))
+		{
+			<button type="submit"> Зарегистрироваться </button>
+		}
+	}
+</div>
+
+<div>
+	@if (User.Identity.IsAuthenticated)
+	{
+		@using (Html.BeginForm("EditUser", "Account", FormMethod.Get))
+		{
+			<button type="submit"> Редактировать профиль </button>
+		}
+		@using (Html.BeginForm("LogoutPost", "Account", FormMethod.Post))
+		{
+			<button type="submit"> Выйти(сменить аккаунт) </button>
+		}
+	}
+</div>
+
+<div>
+	@if (User.IsInRole("Author"))
+	{
+		@using (Html.BeginForm("Articles", "Article", FormMethod.Get))
+		{
+			<button type="submit"> Мои статьи </button>
+		}
+	}
+	
+</div>
+

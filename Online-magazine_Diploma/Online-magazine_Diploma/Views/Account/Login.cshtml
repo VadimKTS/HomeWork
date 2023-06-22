@@ -1,0 +1,21 @@
+﻿@using Online_magazine_Diploma.Models.AccountModels;
+@model LoginViewModel
+
+<h1>Авторизация пользователя</h1>
+
+@using (Html.BeginForm("LoginPost", "Account", FormMethod.Post))
+{
+	<div>
+		@Html.LabelFor(m => m.Email, "Email")
+		@Html.TextBoxFor(m => m.Email)
+		@Html.ValidationMessageFor(m => m.Email)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.Password, "Пароль")
+		@Html.PasswordFor(m => m.Password)
+		@Html.ValidationMessageFor(m => m.Password)
+	</div>
+
+	<button type="submit"> Войти </button>
+}

@@ -1,0 +1,25 @@
+﻿@using Online_magazine_Diploma.Models.HomeModels;
+@model TitelViewModel
+
+<h1>@Model.Name</h1>
+
+<p>@Model.ImageAddress</p>
+
+@foreach (var p in Model.TopArticles )
+{
+	<h3> @p.Name </h3>
+	<h5> @p.Description </h5>
+	@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+	{
+		<div>
+			-----------------------------------------------------
+			РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА
+			------------------------------------------------------
+		</div>
+	}
+	else
+	{
+		<div>------------------------------------------------------</div>
+	}
+	
+}

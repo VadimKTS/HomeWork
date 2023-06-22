@@ -1,0 +1,39 @@
+﻿@using Online_magazine_Diploma.Models.ArticleModels;
+@model ArticlesViewModel
+
+<h1>Редактирование статьи</h1>
+
+@using (Html.BeginForm("EditArticlePost", "Article", FormMethod.Post))
+{
+	<div style="background-color:antiquewhite">
+		@Html.LabelFor(m => m.AdminDescriptionForEdit, "Замечания:")
+		@Html.DisplayFor(m => m.AdminDescriptionForEdit)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.Name, "Имя:")
+		@Html.TextBoxFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.Description, "Описание:")
+		@Html.TextBoxFor(m => m.Description)
+		@Html.ValidationMessageFor(m => m.Description)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.Text, "Текст:")
+		@Html.TextAreaFor(m => m.Text)
+		@Html.ValidationMessageFor(m => m.Text)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.ArticleTypeName, "Тип статьи:")
+		@Html.DisplayFor(m => m.ArticleTypeName)
+	</div>
+
+	@Html.HiddenFor(m => m.Id)
+	@Html.HiddenFor(m => m.ArticleTypeName)
+	@Html.HiddenFor(m => m.AdminDescriptionForEdit)
+	<button type="submit"> Применить изменения </button>
+}

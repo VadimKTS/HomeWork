@@ -1,0 +1,29 @@
+﻿@using Online_magazine_Diploma.Models.ArticleModels;
+@model AddArticlesViewModel
+
+<h1>Новая статья</h1>
+
+@using (Html.BeginForm("AddArticlePost", "Article", FormMethod.Post))
+{
+	<div>
+		@Html.LabelFor(m => m.Name, "Название Статьи:")
+		@Html.TextBoxFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.Description, "Короткое Описание:")
+		@Html.TextBoxFor(m => m.Description)
+		@Html.ValidationMessageFor(m => m.Description)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.Text, "Текст статьи:")
+		@Html.TextAreaFor(m => m.Text)
+		@Html.ValidationMessageFor(m => m.Text)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.ArticleTypeId, "Тип статьи:")
+		@Html.DropDownListFor(m => m.ArticleTypeId, ViewBag.ArticleTypes as IEnumerable<SelectListItem>)
+	</div>
+	
+	<button type="submit"> Отправить на проверку администратору </button>
+}

@@ -1,0 +1,42 @@
+﻿@using Online_magazine_Diploma.Models.ArticleTypeModels;
+@model ManageArticleTypesViewModel[]
+
+<h1>Управление типами статей авторов</h1>
+
+
+	<p>
+		<table class="table">
+			<tr>
+				<td>Название</td>
+				<td>Описание</td>
+				<td> - </td>
+			</tr>
+		<tbody>
+
+			@foreach (var p in Model)
+			{
+				<tr>
+					<td>@p.Name</td>
+					<td>@p.Description</td>
+				<td>
+						@if (p.IsDeleted != true)
+						{
+							<form method="post" asp-action="DeleteArticleTypePost" asp-controller="ArticleType" asp-route-id="@p.Id">
+								<input type="submit" value="Удалить" />
+							</form>
+						}
+						else
+						{
+							<div>Не активен</div>
+						}
+				</td>
+				</tr>
+			}
+		</tbody>
+			<tfoot>
+			<a asp-action="AddArticleType" asp-controller="ArticleType">Добавить</a>
+			</tfoot>
+		</table>
+	</p>
+
+	

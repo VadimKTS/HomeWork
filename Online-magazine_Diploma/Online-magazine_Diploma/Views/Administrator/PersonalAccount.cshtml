@@ -1,0 +1,27 @@
+﻿<h1>Администраторская</h1>
+
+<p>only for Admin</p>
+
+<div>
+
+	@using (Html.BeginForm("ManageUsers", "Administrator", FormMethod.Get))
+{
+	<button type="submit"> Аккаунты пользователей </button>
+}
+	@using (Html.BeginForm("ArticleTypes", "ArticleType", FormMethod.Get))
+	{
+		<button type="submit"> Типы статей </button>
+	}
+
+	@using (Html.BeginForm("ArticlesForAdmin", "Article", FormMethod.Get))
+	{
+		<button type="submit"> Статьи </button>
+	}
+
+	@using (Html.BeginForm("AddTitel", "Administrator", FormMethod.Get))
+	{
+		<button type="submit"> Добавить титульник </button>
+	}
+	
+</div>
+

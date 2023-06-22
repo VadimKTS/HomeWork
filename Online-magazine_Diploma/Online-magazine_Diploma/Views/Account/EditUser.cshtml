@@ -1,0 +1,39 @@
+﻿@using Online_magazine_Diploma.Models.AccountModels;
+@model EditUserViewModel
+
+<h1>Редактирование пользователя</h1>
+
+@using (Html.BeginForm("EditUserPost", "Account", FormMethod.Post))
+{
+	@*<div>
+		@Html.LabelFor(m => m.Email, "Email")
+		@Html.TextBoxFor(m => m.Email)
+		@Html.ValidationMessageFor(m => m.Email)
+	</div>*@
+
+	<div>
+		@Html.LabelFor(m => m.Name, "Имя")
+		@Html.TextBoxFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.PhoneNumber, "Номер телефона")
+		@Html.TextBoxFor(m => m.PhoneNumber)
+		@Html.ValidationMessageFor(m => m.PhoneNumber)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.OldPassword, "Пароль")
+		@Html.PasswordFor(m => m.OldPassword)
+		@Html.ValidationMessageFor(m => m.OldPassword)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.NewPassword, "Новый пароль")
+		@Html.PasswordFor(m => m.NewPassword)
+		@Html.ValidationMessageFor(m => m.NewPassword)
+	</div>
+
+	<button type="submit"> Применить изменения </button>
+}

@@ -1,0 +1,89 @@
+﻿@using Online_magazine_Diploma.Models.ArticleModels;
+@model IList<ManageArticlesViewModel>
+
+<h1>Cтатьи</h1>
+
+
+@*@using (Html.BeginForm("AddArticle", "Article", FormMethod.Get))
+{
+	<button type="submit"> Написать статью </button>
+}*@
+
+	<p>
+		<table class="table">
+			<tr>
+				<td> Автор </td>
+				<td> Название </td>
+				<td> Комментарий для редактирования </td>
+				<td> Дата создания </td>
+				<td> Описание </td>
+				<td> Текст </td>
+				<td> Тип статьи </td>
+			</tr>
+		<tbody>
+
+			@foreach (var p in Model)
+			{
+				<tr>
+					<td>@p.AuthorUser.Name</td>
+					<td>
+						@p.Name 
+						@if (!p.IsApprovedForPublication)
+						{
+							@*<div>(Не проверена)</div>*@
+							<form method="post" asp-action="ApprovedForPublicationPost" asp-controller="Article" asp-route-id="@p.Id">
+								<input style="background-color:chocolate" type="submit" value="в печать" />
+							</form>
+							
+						}
+						else
+						{
+							<div style="color:chartreuse">(Допущена к публикации)</div>
+						}
+					</td>
+					<td>
+						@if (p.IsApprovedForPublication)
+						{
+							<div style="color:darkgray">(@p.AdminDescriptionForEdit)</div>
+						}
+						else if (p.IsEditNeeded && !p.IsEdited)
+						{
+							<div style="color:brown">@p.AdminDescriptionForEdit</div>
+						}
+						else if (p.IsEditNeeded && p.IsEdited)
+						{
+							<div style="color:saddlebrown">@p.AdminDescriptionForEdit</div>
+							<div style="color:green">отредактировано автором</div>
+							<form method="get" asp-action="EditAdminDescription" asp-controller="Article" asp-route-id="@p.Id">
+								<input type="submit" value="на доработку повторно" />
+							</form>
+						}
+						else
+						{
+							<form method="get" asp-action="EditAdminDescription" asp-controller="Article" asp-route-id="@p.Id">
+								<input type="submit" value="на доработку" />
+							</form>
+						}
+					</td>
+					<td>@p.CreatedDate</td>
+					<td>@p.Description</td>
+					<td>@p.Text</td>
+					<td>
+						 
+						@if (p.ArticleType.IsDeleted)
+						{
+							<div style="color:darkgray">@p.ArticleType.Name (Не активен)</div>
+						}
+						else
+						{
+							@p.ArticleType.Name
+						}
+					</td>
+				</tr>
+			}
+		</tbody>
+			
+		</table>
+	</p>
+
+	
