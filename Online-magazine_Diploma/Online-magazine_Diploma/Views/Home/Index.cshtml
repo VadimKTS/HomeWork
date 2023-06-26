@@ -7,14 +7,14 @@
 
 @foreach (var p in Model.TopArticles )
 {
-	<h3> @p.Name </h3>
+	<h3> <a asp-area="" asp-controller="User" asp-action="ReadArticle" asp-route-id="@p.Id"> @p.Name </a> </h3>
 	<h5> @p.Description </h5>
 	@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
 	{
 		<div>
 			-----------------------------------------------------
-			РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА
-			------------------------------------------------------
+			РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА
+			-----------------------------------------------------
 		</div>
 	}
 	else

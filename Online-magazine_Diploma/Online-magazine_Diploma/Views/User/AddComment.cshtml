@@ -1,0 +1,19 @@
+﻿@using Online_magazine_Diploma.Models.CommentModels;
+@model CommentViewModel
+
+@if (User.Identity.IsAuthenticated)
+{
+	@using (Html.BeginForm("AddCommentPost", "User", FormMethod.Post))
+	{
+		<div>
+			@Html.LabelFor(m => m.Text, "Ваш комментарий к статье")
+			@Html.TextAreaFor(m => m.Text)
+			@Html.ValidationMessageFor(m => m.Text)
+		</div>
+
+		@Html.HiddenFor(m => m.ArticleId)
+		@Html.HiddenFor(m => m.UserEmail)
+
+		<button type="submit"> Добавить </button>
+	}
+}

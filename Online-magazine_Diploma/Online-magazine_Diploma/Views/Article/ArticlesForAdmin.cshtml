@@ -64,6 +64,9 @@
 								<input type="submit" value="на доработку" />
 							</form>
 						}
+						<form method="post" asp-action="DeletePost" asp-controller="Article" asp-route-id="@p.Id">
+							<input style="background-color:red" type="submit" value="удалить" />
+						</form>
 					</td>
 					<td>@p.CreatedDate</td>
 					<td>@p.Description</td>

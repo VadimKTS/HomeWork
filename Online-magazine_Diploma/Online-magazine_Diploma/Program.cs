@@ -26,8 +26,9 @@ namespace Online_magazine_Diploma
 			builder.Services.AddTransient<IArticleTypeService, ArticleTypeService>();
 			builder.Services.AddTransient<IArticleService, ArticleService>();
 			builder.Services.AddTransient<ITitelService, TitelService>();
+			builder.Services.AddTransient<ICommentService, CommentService>();
 
-			// аутентификация с помощью куки
+			// Аутентификация с помощью куки
 			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 				.AddCookie(option =>
 				{

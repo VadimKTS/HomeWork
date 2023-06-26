@@ -1,0 +1,66 @@
+﻿@using Online_magazine_Diploma.Models.CommentModels;
+@using Online_magazine_Diploma.Models.ArticleModels;
+@model ReadArticlesViewModel
+
+<h1>@Model.Name</h1>
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+	<div>
+		-----------------------------------------------------
+		РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА
+		-----------------------------------------------------
+	</div>
+}
+else
+{
+	<div>------------------------------------------------------</div>
+}
+
+<h5> @Model.Description </h5>
+
+<div>@Model.Text</div>
+
+<div>@Model.AuthorUser.Name @Model.CreatedDate</div>
+<div>Эту статью просмотрели @Model.CountOfViews раз(а)</div>
+
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+	<div>
+		-----------------------------------------------------
+		РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА
+		-----------------------------------------------------
+	</div>
+}
+else
+{
+	<div>------------------------------------------------------</div>
+}
+
+<div>
+	@*@await Html.PartialAsync("AddComment")*@
+	@{
+		await Html.RenderPartialAsync("AddComment", new CommentViewModel() {ArticleId = Model.Id, UserEmail = User.Identity.Name});
+	}
+</div>
+
+<h2> Комментарии </h2>
+
+@foreach (var p in Model.Comments )
+{
+	if (!p.IsDeleted)
+	{
+		<div>
+			@if (p.User.UserRole.Equals("VipUser"))
+			{
+				<div style="color:gold">VIP</div>
+			}
+			@p.User.Name (@p.CreatedDate): @p.Text @if (p.IsEdited)
+			{
+				<div>(изменено)</div>
+			}
+		</div>
+	}
+	
+	
+	
+}

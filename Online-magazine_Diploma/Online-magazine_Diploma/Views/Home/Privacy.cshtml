@@ -1,7 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+﻿@using Online_magazine_Diploma.Models.HomeModels;
+@model MainPageViewModel
+
+@foreach (var articleType in Model.ArticleTypes)
+{
+	@if (articleType.Articles != null)
+	{
+	<h2>
+		<div>@articleType.Name</div>
+		<div>--------------------------------------------------------------------</div>
+	</h2>
+		@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+		{
+			<div>
+				-----------------------------------------------------
+				РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА РЕКЛАМА
+				-----------------------------------------------------
+			</div>
+		}
+		else
+		{
+			<div>------------------------------------------------------</div>
+		}
+
+
+		<div>
+		@foreach (var article in articleType.Articles)
+		{
+			@if (article.IsApprovedForPublication && !article.IsDeleted) @*костыль*@
+			{
+				<h4><a asp-area="" asp-controller="User" asp-action="ReadArticle" asp-route-id="@article.Id"> @article.Name </a> </h4>
+				<div>@article.Description</div>
+			}
+		}
+	</div>
+	}
 }
-<h1>@ViewData["Title"]</h1>
-
-<p>Use this page to detail your site's privacy policy.</p>
-

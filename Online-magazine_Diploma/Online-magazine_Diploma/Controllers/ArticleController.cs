@@ -63,30 +63,28 @@ namespace Online_magazine_Diploma.Controllers
 		{
 			IList<Article> articles = await _articleService.GetAllArticles();
 			User author = await _userService.GetUserByEmail(User.Identity.Name);
-			int arraySize = articles.Count;
-			var articlesArray = new ArticlesViewModel[arraySize];
-			int i = 0;
-			foreach (var item in articles)
+			var viewModel = new List<ArticlesViewModel>();
+			foreach (var article in articles)
 			{
-				if (item.AuthorUserId.Equals(author.Id) && item.IsDeleted == false)
+				if (article.AuthorUserId.Equals(author.Id) && !article.IsDeleted)
 				{
-					ArticleType type = await _articleTypeService.GetArticleTypeById((Guid)item.ArticleTypeId);
-						articlesArray[i] = new ArticlesViewModel
-						{
-							Id = item.Id,
-							Name = item.Name,
-							Text = item.Text,
-							Description = item.Description,
-							ArticleTypeName = type.Name,
-							IsEditNeeded = item.IsEditNeeded,
-							IsApprovedForPublication = item.IsApprovedForPublication,
-							AdminDescriptionForEdit = item.AdminDescriptionForEdit,
-							IsEdited = item.IsEdited,
-						};
-					i++;
+					ArticleType type = await _articleTypeService.GetArticleTypeById((Guid)article.ArticleTypeId);
+					var newModel = new ArticlesViewModel
+								{
+									Id = article.Id,
+									Name = article.Name,
+									Text = article.Text,
+									Description = article.Description,
+									ArticleTypeName = type.Name,
+									IsEditNeeded = article.IsEditNeeded,
+									IsApprovedForPublication = article.IsApprovedForPublication,
+									AdminDescriptionForEdit = article.AdminDescriptionForEdit,
+									IsEdited = article.IsEdited,
+								};
+					viewModel.Add(newModel);
 				}
 			}
-			return View(articlesArray);
+			return View(viewModel);
 		}
 
 		[HttpGet]
@@ -99,24 +97,26 @@ namespace Online_magazine_Diploma.Controllers
 				ArticleType type = await _articleTypeService.GetArticleTypeById((Guid)item.ArticleTypeId);
 				User user = await _userService.GetUserById((Guid)item.AuthorUserId);
 				var article = new ManageArticlesViewModel
-					{
-						Id = item.Id,
-						CreatedDate = item.CreatedDate,
-						Name = item.Name,
-						Text = item.Text,
-						Description = item.Description,
-						ArticleTypeId = type.Id,
-						ArticleType = type,//!!!
-						AuthorUserId = user.Id,
-						AuthorUser = user,//!!!
-						IsEditNeeded = item.IsEditNeeded,
-						IsEdited = item.IsEdited,
-						IsDeleted = item.IsDeleted,
-						IsApprovedForPublication = item.IsApprovedForPublication,
-						AdminDescriptionForEdit = item.AdminDescriptionForEdit,
-						
-					};
-				viewArticles.Add(article);
+				{
+					Id = item.Id,
+					CreatedDate = item.CreatedDate,
+					Name = item.Name,
+					Text = item.Text,
+					Description = item.Description,
+					ArticleTypeId = type.Id,
+					ArticleType = type,//!!!
+					AuthorUserId = user.Id,
+					AuthorUser = user,//!!!
+					IsEditNeeded = item.IsEditNeeded,
+					IsEdited = item.IsEdited,
+					IsDeleted = item.IsDeleted,
+					IsApprovedForPublication = item.IsApprovedForPublication,
+					AdminDescriptionForEdit = item.AdminDescriptionForEdit,
+				};
+				if (!article.IsDeleted)
+				{
+					viewArticles.Add(article);
+				}
 			}
 			return View(viewArticles);
 		}
@@ -207,6 +207,15 @@ namespace Online_magazine_Diploma.Controllers
 			{ 
 				return BadRequest("Что-то пошло не так"); 
 			}
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> DeletePost(Guid id)
+		{
+			var article = await _articleService.GetArticleById(id);
+			article.IsDeleted = true;
+			await _articleService.UpdateArticle(article);
+			return Ok($"Статья \"{article.Name}\" удалена!!! ") ;
 		}
 	}
 }

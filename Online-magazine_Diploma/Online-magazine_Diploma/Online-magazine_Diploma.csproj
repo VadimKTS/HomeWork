@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\CommentModels\" />
     <Folder Include="Models\UserModels\" />
     <Folder Include="Models\RatingModels\" />
     <Folder Include="Views\Comment\" />

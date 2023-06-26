@@ -1,5 +1,5 @@
 ﻿@using Online_magazine_Diploma.Models.ArticleModels;
-@model ArticlesViewModel[]
+@model IList<ArticlesViewModel>
 
 <h1>Мои статьи</h1>
 
@@ -36,7 +36,7 @@
 						}
 						else if (p.IsEditNeeded && p.IsEdited)
 						{
-							<div style="color:darkgoldenrod">(измения на проверке)</div>
+							<div style="color:darkgoldenrod">(изменения на проверке)</div>
 						}
 						else
 						{
