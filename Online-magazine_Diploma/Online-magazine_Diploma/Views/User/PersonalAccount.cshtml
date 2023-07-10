@@ -1,7 +1,12 @@
 ﻿
 <h1>Личный кабинет пользователя</h1>
 
-<p>@User.Identity.Name</p>
+<p>@User.Identity.Name
+	@if (User.IsInRole("VipUser"))
+	{
+		<a style="color:darkorange"> VIP </a>
+	}
+</p>
 
 <div>
 	@if (!User.Identity.IsAuthenticated)
@@ -28,6 +33,20 @@
 		{
 			<button type="submit"> Выйти(сменить аккаунт) </button>
 		}
+		@if (User.IsInRole("User"))
+		{
+			@using (Html.BeginForm("BeVip", "Account", FormMethod.Get))
+			{
+				<button type="submit"> Получить VIP статус </button>
+			}
+		}
+		else if (User.IsInRole("VipUser"))
+		{
+			@using (Html.BeginForm("BeVip", "Account", FormMethod.Get))
+			{
+				<button type="submit"> Продлить VIP статус</button>
+			}
+		}
 	}
 </div>
 
@@ -41,4 +60,6 @@
 	}
 	
 </div>
+
+
 

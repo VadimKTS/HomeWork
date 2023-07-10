@@ -50,11 +50,13 @@ else
 	if (!p.IsDeleted)
 	{
 		<div>
-			@if (p.User.UserRole.Equals("VipUser"))
+
+			@p.User.Name (@p.CreatedDate)
+			@if (p.User.UserRole.Equals(Online_magazine_Diploma.DataAccess.Entity.UserRole.VipUser))
 			{
-				<div style="color:gold">VIP</div>
+				<a style="color:tomato">VIP</a>
 			}
-			@p.User.Name (@p.CreatedDate): @p.Text @if (p.IsEdited)
+			: @p.Text @if (p.IsEdited)
 			{
 				<div>(изменено)</div>
 			}

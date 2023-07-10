@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Images\1648013521_22-kartinkin-net-p-kartinki-dlya-titulnogo-lista-prezentatsii-28.jpg" />
+    <Content Remove="wwwroot\Images\encoded-20230515202942.txt" />
+    <Content Remove="wwwroot\Images\smail-reper-2.jpg" />
+    <Content Remove="wwwroot\Images\smail-reper-2.webp" />
+    <Content Remove="wwwroot\Images\VIP-AVATAR-encoded-20230703112624.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
@@ -22,6 +30,14 @@
     <Folder Include="Models\RatingModels\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\Rating\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\1648013521_22-kartinkin-net-p-kartinki-dlya-titulnogo-lista-prezentatsii-28.jpg" />
+    <None Include="wwwroot\Images\encoded-20230515202942.txt" />
+    <None Include="wwwroot\Images\smail-reper-2.jpg" />
+    <None Include="wwwroot\Images\smail-reper-2.webp" />
+    <None Include="wwwroot\Images\VIP-AVATAR-encoded-20230703112624.txt" />
   </ItemGroup>
 
 </Project>

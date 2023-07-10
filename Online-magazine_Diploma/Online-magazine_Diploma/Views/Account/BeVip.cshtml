@@ -1,0 +1,43 @@
+﻿@using Online_magazine_Diploma.Models.AccountModels;
+@model BeVipViewModel
+
+<h1> Vip статус на 30 дней </h1>
+
+@using (Html.BeginForm("BeVipPost", "Account", FormMethod.Post))
+{
+	<div>
+		@Html.LabelFor(m => m.Email, "Email: ")
+		@Html.TextBoxFor(m => m.Email)
+		@Html.ValidationMessageFor(m => m.Email)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.CreditCard, "Номер карты")
+		@Html.TextBoxFor(m => m.CreditCard)
+		@Html.FormatValue(Model.CreditCard, "0000-0000-0000-0000")
+		@Html.ValidationMessageFor(m => m.CreditCard)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.CardHolderName, "Имя держателя карты")
+		@Html.TextBoxFor(m => m.CardHolderName)
+		@Html.FormatValue(Model.CardHolderName, "FIRSTNAME LASTNAME")
+		@Html.ValidationMessageFor(m => m.CardHolderName)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.Expires, "Срок действия")
+		@Html.TextBoxFor(m => m.Expires)
+		@Html.FormatValue(Model.Expires, "MM/YY")
+		@Html.ValidationMessageFor(m => m.Expires)
+	</div>
+
+	<div>
+		@Html.LabelFor(m => m.CvvCode, "CVV")
+		@Html.PasswordFor(m => m.CvvCode)
+		@Html.FormatValue(Model.CvvCode, "***")
+		@Html.ValidationMessageFor(m => m.CvvCode)
+	</div>
+
+	<button type="submit"> Оплатить </button>
+}

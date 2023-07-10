@@ -40,6 +40,11 @@ namespace Online_magazine_Diploma.Controllers
 					await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
 						new ClaimsPrincipal(Authenticate(user)));
 					response = RedirectToAction("PersonalAccount", "User");
+					if (user.UserRole.Equals(UserRole.VipUser) && user.VipStatusEnd < DateTime.Now) 
+					{ 
+						user.UserRole = UserRole.User;
+						await _userService.UpdateUser(user);
+					}
 				}
 				else
 				{
@@ -76,7 +81,8 @@ namespace Online_magazine_Diploma.Controllers
 						PhoneNumber = model.PhoneNumber,
 						PasswordHash = HashPasswordKDF.HashPassword(model.ConfirmPassword),
 						IsDeleted = false,
-						UserRole = UserRole.User
+						UserRole = UserRole.User,
+						VipStatusEnd = DateTime.Now,
 					};
 					await _userService.CreateUser(user);
 					await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
@@ -145,6 +151,46 @@ namespace Online_magazine_Diploma.Controllers
 			{
 				return BadRequest();
 			}
+		}
+
+		public async Task<IActionResult> BeVip()
+		{
+			User user = await _userService.GetUserByEmail(User.Identity.Name);
+			if (user != null)
+			{
+				var model = new BeVipViewModel
+				{
+					Email = user.Email,
+				};
+				return View(model);
+			}
+			return BadRequest();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> BeVipPost(BeVipViewModel model)
+		{
+			if (ModelState.IsValid) 
+			{ 
+				User user = await _userService.GetUserByEmail(model.Email);
+				if (user != null)
+				{
+					user.UserRole = UserRole.VipUser;
+					if (user.VipStatusEnd < DateTime.Now)
+					{
+						user.VipStatusEnd = DateTime.Now.AddDays(30);
+					}
+					else
+					{
+						user.VipStatusEnd.AddDays(30);
+					}
+					await _userService.UpdateUser(user);
+					await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+							new ClaimsPrincipal(Authenticate(user)));
+					return RedirectToAction("PersonalAccount", "User");
+				}
+			}
+			return BadRequest("Что-то пошло не так!");
 		}
 	}
 }

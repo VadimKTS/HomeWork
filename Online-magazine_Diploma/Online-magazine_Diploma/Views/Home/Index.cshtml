@@ -1,14 +1,17 @@
 ﻿@using Online_magazine_Diploma.Models.HomeModels;
 @model TitelViewModel
 
-<h1>@Model.Name</h1>
+<h1 class="Titel1">@Model.Name</h1>
 
-<p>@Model.ImageAddress</p>
-
+<p class="Titel2">@Model.ImageAddress</p>
+<div class="mainBox">
 @foreach (var p in Model.TopArticles )
 {
-	<h3> <a asp-area="" asp-controller="User" asp-action="ReadArticle" asp-route-id="@p.Id"> @p.Name </a> </h3>
-	<h5> @p.Description </h5>
+		<div class="mainArticleBox">
+			<a class="mainArticleBox" asp-area="" asp-controller="User" asp-action="ReadArticle" asp-route-id="@p.Id"> @p.Name </a>
+
+		</div>
+		<div class="mainArticleDescriptionBox"> @p.Description </div>
 	@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
 	{
 		<div>

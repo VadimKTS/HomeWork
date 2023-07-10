@@ -22,13 +22,11 @@ namespace Online_magazine_Diploma.DataAccess.Entity
         [Required]
         [Phone]
         public string PhoneNumber { get; set; }
-
-        //public byte[] Filebase64 { get; set; }
-
         public UserRole UserRole { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
+        public DateTime VipStatusEnd { get; set; }
+		public bool IsDeleted { get; set; }
+		public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }
 		public virtual ICollection<Article> Article { get; set; }
-		public bool IsDeleted { get; set; }
     }
 }

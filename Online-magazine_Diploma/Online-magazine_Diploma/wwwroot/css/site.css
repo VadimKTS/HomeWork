@@ -1,18 +1,85 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+    }
+
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    h1 {
+    }
+
+    .Titel1 {
+        margin-top: 10mm;
+        margin-left: 100mm;
+        font-size: 50px;
+        color: white;
+    }
+
+    .mainBox {
+        margin-top: 5mm;
+        margin-left: 35mm;
+    }
+
+    .mainArticleBox {
+        text-decoration-color: brown;
+        color: #262831;
+        font-weight: 600;
+        font-size: 23px;
+    }
+
+    .mainArticleDescriptionBox {
+        color: darkblue;
+        font-weight: 400;
+        font-size: 18px;
+        background-blend-mode:hard-light;
+    }
+
+    .href {
+        text-decoration-color: #4cde2f;
+        color: brown;
+    }
+
+    header {
+        margin-top: 5mm;
+        background-color:darkred;
+    }
+
+    #Titel {
+        background-color: aqua;
+        color: brown;
+    }
+
+    nav.navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 {
+        color: aqua;
+    }
+
+.navbar-collapse {
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
+    .navbar-nav {
+        display: flex;
+        gap: 5px;
+        background-color: bisque;
+    }
 
-body {
-  margin-bottom: 60px;
+.navbar-nav > li {
+    background-color: burlywood;
 }
+    .navbar-brand {
+        background-color: burlywood;
+    }
+    
+    head {
+        background-color: burlywood;
+    }
+
+    body {
+        background-image: url('../images/1648013521_22-kartinkin-net-p-kartinki-dlya-titulnogo-lista-prezentatsii-28.jpg');
+        margin-bottom: 60px;
+    }

@@ -24,7 +24,7 @@ namespace Online_magazine_Diploma.Services.Service
 
 		public async Task<IList<Article>> GetAllArticles()
 		{
-			IList<Article> articles = await UnitOfWork.Articles.GetAll();
+			var articles = await UnitOfWork.Articles.GetAll();
 			return articles;
 		}
 

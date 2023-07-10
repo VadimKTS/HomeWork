@@ -8,6 +8,7 @@ namespace Online_magazine_Diploma.DataAccess.Entity
         Author,
         GuestUser,
         User,
-        VipUser
+        VipUser,
+        Moderator
     }
 }
