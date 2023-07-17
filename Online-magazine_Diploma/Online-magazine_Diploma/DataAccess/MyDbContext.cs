@@ -41,7 +41,6 @@ namespace Online_magazine_Diploma.DataAccess
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<ArticleType> ArticleTypes { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
         public DbSet<Titel> Titels { get; set; }
     }
 }

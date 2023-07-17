@@ -26,7 +26,6 @@ namespace Online_magazine_Diploma.DataAccess.Entity
         public DateTime VipStatusEnd { get; set; }
 		public bool IsDeleted { get; set; }
 		public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Rating> Rating { get; set; }
 		public virtual ICollection<Article> Article { get; set; }
     }
 }

@@ -51,7 +51,6 @@ namespace Online_magazine_Diploma.Controllers
 				AuthorUser = article.AuthorUser,
 				AdminDescriptionForEdit = article.AdminDescriptionForEdit,
 				ArticleType = article.ArticleType,
-				Rating = article.Rating,
 				ArticleTypeId = article.ArticleTypeId,
 				Comments = article.Comments,
 				CountOfViews = article.CountOfViews,

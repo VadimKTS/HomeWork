@@ -23,7 +23,6 @@ namespace Online_magazine_Diploma.Models.AdministratorModels
 		public SelectList UserRoles { get; } = new SelectList(roles);
 
 		public virtual ICollection<Comment> Comments { get; set; }
-		public virtual ICollection<Rating> Ratings { get; set; }
 		public virtual ICollection<Article> Articles { get; set; }
 		public bool IsDeleted { get; set; }
 	}

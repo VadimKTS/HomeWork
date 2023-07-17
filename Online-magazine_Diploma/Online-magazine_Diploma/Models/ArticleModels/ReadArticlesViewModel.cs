@@ -30,7 +30,6 @@ namespace Online_magazine_Diploma.Models.ArticleModels
 		public Guid? ArticleTypeId { get; set; }
 		public ArticleType ArticleType { get; set; }
 		public virtual ICollection<Comment> Comments { get; set; }
-		public virtual ICollection<Rating> Rating { get; set; }
 		public Guid? TitelId { get; set; }
 		public int CountOfViews { get; set; }
 		public string AdminDescriptionForEdit { get; set; }

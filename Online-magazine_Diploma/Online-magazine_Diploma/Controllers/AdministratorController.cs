@@ -37,7 +37,6 @@ namespace Online_magazine_Diploma.Controllers
 					UserRole = item.UserRole,
 					IsDeleted = item.IsDeleted,
 					Comments = item.Comments,
-					Ratings = item.Rating,
 					Articles = item.Article,
 				};
 				i++;
@@ -59,7 +58,6 @@ namespace Online_magazine_Diploma.Controllers
 				UserRole = user.UserRole,
 				IsDeleted = user.IsDeleted,
 				Comments = user.Comments,
-				Ratings = user.Rating,
 				Articles = user.Article,
 
 			};
