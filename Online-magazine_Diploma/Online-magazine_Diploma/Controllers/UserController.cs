@@ -64,7 +64,7 @@ namespace Online_magazine_Diploma.Controllers
 				Name = article.Name,
 			};
 
-			return View(viewModel);// скорректировать
+			return View(viewModel);
 		}
 
 		public async Task<IActionResult> AddComment()

@@ -37,6 +37,5 @@ namespace Online_magazine_Diploma.Models.ArticleModels
 		public bool IsEdited { get; set; }
 		public bool IsDeleted { get; set; }
 		public bool IsApprovedForPublication { get; set; }
-		// скорректировать
 	}
 }

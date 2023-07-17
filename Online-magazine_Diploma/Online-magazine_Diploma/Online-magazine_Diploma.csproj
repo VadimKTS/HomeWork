@@ -44,12 +44,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\Images\1648013521_22-kartinkin-net-p-kartinki-dlya-titulnogo-lista-prezentatsii-28.jpg" />
-    <None Include="wwwroot\Images\encoded-20230515202942.txt" />
-    <None Include="wwwroot\Images\smail-reper-2.jpg" />
-    <None Include="wwwroot\Images\smail-reper-2.webp" />
-    <None Include="wwwroot\Images\VIP-AVATAR-encoded-20230703112624.txt" />
-  </ItemGroup>
-
 </Project>
