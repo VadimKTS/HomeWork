@@ -11,31 +11,26 @@ namespace Online_magazine_Diploma.Services.Service
 
 		}
 
-		public async Task<ArticleType> CreateArticleType(ArticleType articleType)
+		public async Task<ArticleType> CreateArticleTypeAsync(ArticleType articleType)
 		{
-			return await UnitOfWork.ArticleTypes.Create(articleType);
+			return await UnitOfWork.ArticleTypes.CreateAsync(articleType);
 		}
 
-		public async Task<ArticleType> GetArticleTypeById(Guid id)
+		public async Task<ArticleType> GetArticleTypeByIdAsync(Guid id)
 		{
-			IList<ArticleType> articleTypes = await UnitOfWork.ArticleTypes.GetAll();
+			IList<ArticleType> articleTypes = await UnitOfWork.ArticleTypes.GetAllAsync();
 			return articleTypes.FirstOrDefault(x => x.Id == id);
 		}
 
-		public async Task<IList<ArticleType>> GetAllArticleTypes()
+		public async Task<IList<ArticleType>> GetAllArticleTypesAsync()
 		{
-			IList<ArticleType> articleTypes = await UnitOfWork.ArticleTypes.GetAll();
+			IList<ArticleType> articleTypes = await UnitOfWork.ArticleTypes.GetAllAsync();
 			return articleTypes;
 		}
 
-		public async Task UpdateArticleType(ArticleType articleType)
+		public async Task UpdateArticleTypeAsync(ArticleType articleType)
 		{
-			await UnitOfWork.ArticleTypes.Update(articleType);
-		}
-
-		public async Task DeleteArticleType(ArticleType articleType)
-		{
-			await UnitOfWork.ArticleTypes.Delete(articleType);
+			await UnitOfWork.ArticleTypes.UpdateAsync(articleType);
 		}
 	}
 }

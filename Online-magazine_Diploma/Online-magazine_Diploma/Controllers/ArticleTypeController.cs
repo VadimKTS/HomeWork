@@ -17,9 +17,9 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpGet]
 		public async Task<IActionResult> ArticleTypes()
 		{
-			if (await _articleTypeService.GetAllArticleTypes() != null)
+			if (await _articleTypeService.GetAllArticleTypesAsync() != null)
 			{
-				IList<ArticleType> articleTypes = await _articleTypeService.GetAllArticleTypes();
+				IList<ArticleType> articleTypes = await _articleTypeService.GetAllArticleTypesAsync();
 				var articleTypesArray = new ManageArticleTypesViewModel[articleTypes.Count];
 				int i = 0;
 				foreach (var item in articleTypes)
@@ -55,7 +55,7 @@ namespace Online_magazine_Diploma.Controllers
 						Description = model.Description,
 						IsDeleted = false
 					};
-					await _articleTypeService.CreateArticleType(articleType);
+					await _articleTypeService.CreateArticleTypeAsync(articleType);
 					return RedirectToAction("ArticleTypes", "ArticleType");
 			}
 			else
@@ -67,11 +67,11 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpPost]
 		public async Task<IActionResult> DeleteArticleTypePost(Guid id)
 		{
-			ArticleType oldArticleType = await _articleTypeService.GetArticleTypeById(id);
+			ArticleType oldArticleType = await _articleTypeService.GetArticleTypeByIdAsync(id);
 			if (oldArticleType != null)
 			{
 				oldArticleType.IsDeleted = true;
-				await _articleTypeService.UpdateArticleType(oldArticleType);
+				await _articleTypeService.UpdateArticleTypeAsync(oldArticleType);
 				return RedirectToAction("ArticleTypes", "ArticleType");
 			}
 			else

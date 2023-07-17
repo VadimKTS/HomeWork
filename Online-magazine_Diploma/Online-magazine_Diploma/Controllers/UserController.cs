@@ -26,10 +26,10 @@ namespace Online_magazine_Diploma.Controllers
 
 		public async Task<IActionResult> ReadArticle(Guid id) 
 		{
-			var article = await _articleService.GetArticleById(id);
+			var article = await _articleService.GetArticleByIdAsync(id);
 			article.CountOfViews += 1;
-			await _articleService.UpdateArticle(article);
-			IList<Comment> comments = await _commentService.GetCommentsByArticleId(id);
+			await _articleService.UpdateArticleAsync(article);
+			IList<Comment> comments = await _commentService.GetCommentsByArticleIdAsync(id);
 			if (comments == null)
 			{
 				return NotFound("У этой статьи нет комментариев");
@@ -37,11 +37,11 @@ namespace Online_magazine_Diploma.Controllers
 
 			foreach (var item in comments)
 			{
-				item.User = await _userService.GetUserById((Guid)item.UserId);
+				item.User = await _userService.GetUserByIdAsync((Guid)item.UserId);
 			}
 					
 			article.Comments = comments.OrderBy(x => x.CreatedDate).ToList();
-			article.AuthorUser = await _userService.GetUserById((Guid)article.AuthorUserId);
+			article.AuthorUser = await _userService.GetUserByIdAsync((Guid)article.AuthorUserId);
 
 			var viewModel = new ReadArticlesViewModel() 
 			{ 
@@ -75,7 +75,7 @@ namespace Online_magazine_Diploma.Controllers
 
 		public async Task<IActionResult> AddCommentPost(CommentViewModel model)
 		{
-			var user = await _userService.GetUserByEmail(model.UserEmail);
+			var user = await _userService.GetUserByEmailAsync(model.UserEmail);
 
 			if (user != null)
 			{
@@ -89,7 +89,7 @@ namespace Online_magazine_Diploma.Controllers
 					IsDeleted = false,
 					IsEdited = false,
 				};
-				await _commentService.CreateComment(newComment);
+				await _commentService.CreateCommentAsync(newComment);
 			}
 			else 
 			{ 

@@ -12,19 +12,19 @@ namespace Online_magazine_Diploma.Services.Service
 
 		}
 
-		public async Task<Comment> CreateComment(Comment comment)
+		public async Task<Comment> CreateCommentAsync(Comment comment)
 		{
-			return await UnitOfWork.Comments.Create(comment);
+			return await UnitOfWork.Comments.CreateAsync(comment);
 		}
 
-		public async Task<Comment> GetCommentById(Guid id)
+		public async Task<Comment> GetCommentByIdAsync(Guid id)
 		{
-			IList<Comment> comments = await UnitOfWork.Comments.GetAll();
+			IList<Comment> comments = await UnitOfWork.Comments.GetAllAsync();
 			return comments.FirstOrDefault(x => x.Id == id);
 		}
-		public async Task<IList<Comment>> GetCommentsByArticleId(Guid id)
+		public async Task<IList<Comment>> GetCommentsByArticleIdAsync(Guid id)
 		{
-			IList<Comment> comments = await UnitOfWork.Comments.GetAll();
+			IList<Comment> comments = await UnitOfWork.Comments.GetAllAsync();
 			IList<Comment> articleComments = new List<Comment>();
 			foreach (Comment comment in comments)
 			{
@@ -36,9 +36,9 @@ namespace Online_magazine_Diploma.Services.Service
 			return articleComments;
 			
 		}
-		public async Task<IList<Comment>> GetCommentsByUserId(Guid id)
+		public async Task<IList<Comment>> GetCommentsByUserIdAsync(Guid id)
 		{
-			IList<Comment> comments = await UnitOfWork.Comments.GetAll(); 
+			IList<Comment> comments = await UnitOfWork.Comments.GetAllAsync(); 
 			IList<Comment> userComments = new List<Comment>();
 			foreach (Comment comment in comments)
 			{
@@ -50,20 +50,15 @@ namespace Online_magazine_Diploma.Services.Service
 			return userComments;
 		}
 
-		public async Task<IList<Comment>> GetAllComments()
+		public async Task<IList<Comment>> GetAllCommentsAsync()
 		{
-			IList<Comment> comments = await UnitOfWork.Comments.GetAll();
+			IList<Comment> comments = await UnitOfWork.Comments.GetAllAsync();
 			return comments;
 		}
 
-		public async Task UpdateComment(Comment comment)
+		public async Task UpdateCommentAsync(Comment comment)
 		{
-			await UnitOfWork.Comments.Update(comment);
-		}
-
-		public async Task DeleteComment(Comment comment)
-		{
-			await UnitOfWork.Comments.Delete(comment);
+			await UnitOfWork.Comments.UpdateAsync(comment);
 		}
 	}
 }

@@ -11,31 +11,26 @@ namespace Online_magazine_Diploma.Services.Service
 
 		}
 
-		public async Task<Titel> CreateTitel(Titel titel)
+		public async Task<Titel> CreateTitelAsync(Titel titel)
 		{
-			return await UnitOfWork.Titels.Create(titel);
+			return await UnitOfWork.Titels.CreateAsync(titel);
 		}
 
-		public async Task<Titel> GetTitelById(Guid id)
+		public async Task<Titel> GetTitelByIdAsync(Guid id)
 		{
-			IList<Titel> titels = await UnitOfWork.Titels.GetAll();
+			IList<Titel> titels = await UnitOfWork.Titels.GetAllAsync();
 			return titels.FirstOrDefault(x => x.Id == id);
 		}
 
-		public async Task<IList<Titel>> GetAllTitels()
+		public async Task<IList<Titel>> GetAllTitelsAsync()
 		{
-			IList<Titel> titels = await UnitOfWork.Titels.GetAll();
+			IList<Titel> titels = await UnitOfWork.Titels.GetAllAsync();
 			return titels;
 		}
 
-		public async Task UpdateTitel(Titel titel)
+		public async Task UpdateTitelAsync(Titel titel)
 		{
-			await UnitOfWork.Titels.Update(titel);
-		}
-
-		public async Task DeleteTitel(Titel titel)
-		{
-			await UnitOfWork.Titels.Delete(titel);
+			await UnitOfWork.Titels.UpdateAsync(titel);
 		}
 	}
 }

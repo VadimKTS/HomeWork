@@ -4,10 +4,9 @@ namespace Online_magazine_Diploma.Services.Interfaces
 {
 	public interface ITitelService
 	{
-		Task<Titel> GetTitelById(Guid id);
-		Task<IList<Titel>> GetAllTitels();
-		Task<Titel> CreateTitel(Titel article);
-		Task UpdateTitel(Titel article);
-		Task DeleteTitel(Titel article);
+		Task<Titel> GetTitelByIdAsync(Guid id);
+		Task<IList<Titel>> GetAllTitelsAsync();
+		Task<Titel> CreateTitelAsync(Titel article);
+		Task UpdateTitelAsync(Titel article);
 	}
 }

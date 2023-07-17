@@ -2,10 +2,9 @@
 {
     public interface IGenericRepository<T>
     {
-        Task<T> Create(T t);
-        Task Update(T t);
-        Task Delete(T t);
-        Task<T> Get(Guid id);
-        Task<IList<T>> GetAll();   // или IEnumerable
+        Task<T> CreateAsync(T t);
+        Task UpdateAsync(T t);
+        Task<T> GetAsync(Guid id);
+        Task<IList<T>> GetAllAsync();   // или IEnumerable
     }
 }

@@ -8,6 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\RatingModels\**" />
+    <Compile Remove="Models\UserModels\**" />
+    <Compile Remove="Views\Comment\**" />
+    <Compile Remove="Views\Rating\**" />
+    <Content Remove="Models\RatingModels\**" />
+    <Content Remove="Models\UserModels\**" />
+    <Content Remove="Views\Comment\**" />
+    <Content Remove="Views\Rating\**" />
+    <EmbeddedResource Remove="Models\RatingModels\**" />
+    <EmbeddedResource Remove="Models\UserModels\**" />
+    <EmbeddedResource Remove="Views\Comment\**" />
+    <EmbeddedResource Remove="Views\Rating\**" />
+    <None Remove="Models\RatingModels\**" />
+    <None Remove="Models\UserModels\**" />
+    <None Remove="Views\Comment\**" />
+    <None Remove="Views\Rating\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\Images\1648013521_22-kartinkin-net-p-kartinki-dlya-titulnogo-lista-prezentatsii-28.jpg" />
     <Content Remove="wwwroot\Images\encoded-20230515202942.txt" />
     <Content Remove="wwwroot\Images\smail-reper-2.jpg" />
@@ -23,13 +42,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\UserModels\" />
-    <Folder Include="Models\RatingModels\" />
-    <Folder Include="Views\Comment\" />
-    <Folder Include="Views\Rating\" />
   </ItemGroup>
 
   <ItemGroup>

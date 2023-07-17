@@ -25,7 +25,7 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpGet]
 		public async Task<IActionResult> ManageUsers()
 		{
-			IList<User> users = await _userService.GetAllUsers();
+			IList<User> users = await _userService.GetAllUsersAsync();
 			var tempUsers = new ManageUsersViewModel[users.Count];
 			int i = 0;
 			foreach (var item in users)
@@ -48,10 +48,9 @@ namespace Online_magazine_Diploma.Controllers
 
 
 		[HttpGet]
-		//[Authorize]
 		public async Task<IActionResult> EditUserRole(Guid id)
 		{
-			User user = await _userService.GetUserById(id);
+			User user = await _userService.GetUserByIdAsync(id);
 			var editUser = new ManageUsersViewModel
 			{
 				Id = user.Id,
@@ -70,14 +69,13 @@ namespace Online_magazine_Diploma.Controllers
 
 
 		[HttpPost]
-		//[Authorize]
 		public async Task<IActionResult> EditUserRolePost(ManageUsersViewModel model)
 		{
-			User oldUser = await _userService.GetUserById(model.Id);
+			User oldUser = await _userService.GetUserByIdAsync(model.Id);
 			if (oldUser != null)
 			{
 				oldUser.UserRole = model.UserRole;
-				await _userService.UpdateUser(oldUser);
+				await _userService.UpdateUserAsync(oldUser);
 				return RedirectToAction("ManageUsers", "Administrator");
 			}
 			else
@@ -87,19 +85,21 @@ namespace Online_magazine_Diploma.Controllers
 		}
 
 		[HttpPost]
-		//[Authorize]
 		public async Task<IActionResult> DeleteUserPost(Guid id)
 		{
-			User oldUser = await _userService.GetUserById(id);
-			if (oldUser != null)
+			User oldUser = await _userService.GetUserByIdAsync(id);
+			if (oldUser != null && !oldUser.UserRole.Equals(UserRole.Administrator))
 			{
 				oldUser.IsDeleted = true;
-				await _userService.UpdateUser(oldUser);
+				await _userService.UpdateUserAsync(oldUser);
 				return RedirectToAction("ManageUsers", "Administrator");
 			}
-			else
+			else if (oldUser.UserRole.Equals(UserRole.Administrator))
 			{
-				return BadRequest();
+                return BadRequest("Нет доступа! Невозможно удалить администратора.");
+            }
+			{
+				return BadRequest("Что-то пошло не так!");
 			}
 		}
 
@@ -121,7 +121,7 @@ namespace Online_magazine_Diploma.Controllers
 					ActivateDate = model.ActivateDate,
 					ImageAddress = model.ImageAddress,
 				};
-				_titelService.CreateTitel(titel);
+				_titelService.CreateTitelAsync(titel);
 
 				return RedirectToAction("PersonalAccount", "Administrator");
 			}

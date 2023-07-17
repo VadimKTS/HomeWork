@@ -11,32 +11,32 @@ namespace Online_magazine_Diploma.Services.Service
 
 		}
 
-		public async Task<User> CreateUser(User user)
+		public async Task<User> CreateUserAsync(User user)
 		{
-			return await UnitOfWork.Users.Create(user);
+			return await UnitOfWork.Users.CreateAsync(user);
 		}
 
-		public async Task<User> GetUserByEmail(string email)
+		public async Task<User> GetUserByEmailAsync(string email)
 		{
-			IList<User> users = await UnitOfWork.Users.GetAll();
+			IList<User> users = await UnitOfWork.Users.GetAllAsync();
 			return users.FirstOrDefault(x => x.Email == email && x.IsDeleted != true);
 		}
 
-		public async Task<User> GetUserById(Guid id)
+		public async Task<User> GetUserByIdAsync(Guid id)
 		{
-			IList<User> users = await UnitOfWork.Users.GetAll();
+			IList<User> users = await UnitOfWork.Users.GetAllAsync();
 			return users.FirstOrDefault(x => x.Id == id);
 		}
 
-		public async Task<IList<User>> GetAllUsers()
+		public async Task<IList<User>> GetAllUsersAsync()
 		{
-			IList<User> users = await UnitOfWork.Users.GetAll();
+			IList<User> users = await UnitOfWork.Users.GetAllAsync();
 			return users;
 		}
 
-		public async Task UpdateUser(User user)
+		public async Task UpdateUserAsync(User user)
 		{
-			await UnitOfWork.Users.Update(user);
+			await UnitOfWork.Users.UpdateAsync(user);
 		}
 	}
 }

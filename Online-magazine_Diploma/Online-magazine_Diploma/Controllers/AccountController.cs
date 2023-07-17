@@ -34,7 +34,7 @@ namespace Online_magazine_Diploma.Controllers
 			if (ModelState.IsValid)
 			{
 				IActionResult response = Unauthorized();
-				User user = await _userService.GetUserByEmail(model.Email);
+				User user = await _userService.GetUserByEmailAsync(model.Email);
 				if (user != null && HashPasswordKDF.VerifyHashedPassword(user.PasswordHash, model.Password))
 				{
 					await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
@@ -43,7 +43,7 @@ namespace Online_magazine_Diploma.Controllers
 					if (user.UserRole.Equals(UserRole.VipUser) && user.VipStatusEnd < DateTime.Now) 
 					{ 
 						user.UserRole = UserRole.User;
-						await _userService.UpdateUser(user);
+						await _userService.UpdateUserAsync(user);
 					}
 				}
 				else
@@ -70,7 +70,7 @@ namespace Online_magazine_Diploma.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var userValid = await _userService.GetUserByEmail(model.Email);
+				var userValid = await _userService.GetUserByEmailAsync(model.Email);
 				if (userValid == null && model.Password.Equals(model.ConfirmPassword))
 				{
 					var user = new User
@@ -84,7 +84,7 @@ namespace Online_magazine_Diploma.Controllers
 						UserRole = UserRole.User,
 						VipStatusEnd = DateTime.Now,
 					};
-					await _userService.CreateUser(user);
+					await _userService.CreateUserAsync(user);
 					await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
 						new ClaimsPrincipal(Authenticate(user)));
 					return RedirectToAction("PersonalAccount", "User");
@@ -123,7 +123,7 @@ namespace Online_magazine_Diploma.Controllers
 		//[Authorize]
 		public async Task<IActionResult> EditUser()
 		{
-			User user = await _userService.GetUserByEmail(User.Identity.Name);
+			User user = await _userService.GetUserByEmailAsync(User.Identity.Name);
 			var editUser = new EditUserViewModel
 			{
 				Name = user.Name,
@@ -138,13 +138,13 @@ namespace Online_magazine_Diploma.Controllers
 		//[Authorize]
 		public async Task<IActionResult> EditUserPost(EditUserViewModel model)
 		{
-			User oldUser = await _userService.GetUserByEmail(User.Identity.Name);
+			User oldUser = await _userService.GetUserByEmailAsync(User.Identity.Name);
 			if (oldUser != null)
 			{
 				oldUser.Name = model.Name;
 				oldUser.PhoneNumber = model.PhoneNumber;
 				if (model.OldPassword != null && model.NewPassword != null && HashPasswordKDF.VerifyHashedPassword(model.OldPassword, oldUser.PasswordHash)) oldUser.PasswordHash = HashPasswordKDF.HashPassword(model.NewPassword);
-				await _userService.UpdateUser(oldUser);
+				await _userService.UpdateUserAsync(oldUser);
 				return RedirectToAction("PersonalAccount", "User");
 			}
 			else
@@ -155,7 +155,7 @@ namespace Online_magazine_Diploma.Controllers
 
 		public async Task<IActionResult> BeVip()
 		{
-			User user = await _userService.GetUserByEmail(User.Identity.Name);
+			User user = await _userService.GetUserByEmailAsync(User.Identity.Name);
 			if (user != null)
 			{
 				var model = new BeVipViewModel
@@ -172,7 +172,7 @@ namespace Online_magazine_Diploma.Controllers
 		{
 			if (ModelState.IsValid) 
 			{ 
-				User user = await _userService.GetUserByEmail(model.Email);
+				User user = await _userService.GetUserByEmailAsync(model.Email);
 				if (user != null)
 				{
 					user.UserRole = UserRole.VipUser;
@@ -184,7 +184,7 @@ namespace Online_magazine_Diploma.Controllers
 					{
 						user.VipStatusEnd.AddDays(30);
 					}
-					await _userService.UpdateUser(user);
+					await _userService.UpdateUserAsync(user);
 					await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
 							new ClaimsPrincipal(Authenticate(user)));
 					return RedirectToAction("PersonalAccount", "User");

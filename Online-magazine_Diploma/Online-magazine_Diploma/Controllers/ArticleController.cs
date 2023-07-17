@@ -22,7 +22,7 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpGet]
 		public async Task<IActionResult> AddArticle()
 		{
-			List<ArticleType> articleTypes = (List<ArticleType>)await _articleTypeService.GetAllArticleTypes();
+			List<ArticleType> articleTypes = (List<ArticleType>)await _articleTypeService.GetAllArticleTypesAsync();
 			articleTypes = articleTypes.Where(x => x.IsDeleted == false).ToList();
 			ViewBag.ArticleTypes = new SelectList(articleTypes, "Id", "Name");
 			return View();
@@ -31,7 +31,7 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpPost]
 		public async Task<IActionResult> AddArticlePost(AddArticlesViewModel model)
 		{
-			var user = await _userService.GetUserByEmail(User.Identity.Name);
+			var user = await _userService.GetUserByEmailAsync(User.Identity.Name);
 			if (ModelState.IsValid)
 			{
 				var article = new Article
@@ -49,7 +49,7 @@ namespace Online_magazine_Diploma.Controllers
 					IsEditNeeded = false,
 					AdminDescriptionForEdit = "default",
 				};
-				await _articleService.CreateArticle(article);
+				await _articleService.CreateArticleAsync(article);
 				return RedirectToAction("Articles", "Article");
 			}
 			else
@@ -61,14 +61,14 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Articles()
 		{
-			IList<Article> articles = await _articleService.GetAllArticles();
-			User author = await _userService.GetUserByEmail(User.Identity.Name);
+			IList<Article> articles = await _articleService.GetAllArticlesAsync();
+			User author = await _userService.GetUserByEmailAsync(User.Identity.Name);
 			var viewModel = new List<ArticlesViewModel>();
 			foreach (var article in articles)
 			{
 				if (article.AuthorUserId.Equals(author.Id) && !article.IsDeleted)
 				{
-					ArticleType type = await _articleTypeService.GetArticleTypeById((Guid)article.ArticleTypeId);
+					ArticleType type = await _articleTypeService.GetArticleTypeByIdAsync((Guid)article.ArticleTypeId);
 					var newModel = new ArticlesViewModel
 								{
 									Id = article.Id,
@@ -90,12 +90,12 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpGet]
 		public async Task<IActionResult> ArticlesForAdmin()
 		{
-			IList<Article> articles = await _articleService.GetAllArticles();
+			IList<Article> articles = await _articleService.GetAllArticlesAsync();
 			var viewArticles = new List<ManageArticlesViewModel>();
 			foreach (var item in articles)
 			{
-				ArticleType type = await _articleTypeService.GetArticleTypeById((Guid)item.ArticleTypeId);
-				User user = await _userService.GetUserById((Guid)item.AuthorUserId);
+				ArticleType type = await _articleTypeService.GetArticleTypeByIdAsync((Guid)item.ArticleTypeId);
+				User user = await _userService.GetUserByIdAsync((Guid)item.AuthorUserId);
 				var article = new ManageArticlesViewModel
 				{
 					Id = item.Id,
@@ -124,16 +124,16 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpPost]
 		public async Task<IActionResult> ApprovedForPublicationPost(Guid id)
 		{
-			Article article = await _articleService.GetArticleById(id);
+			Article article = await _articleService.GetArticleByIdAsync(id);
 			article.IsApprovedForPublication = true;
-			await _articleService.UpdateArticle(article);
+			await _articleService.UpdateArticleAsync(article);
 			return RedirectToAction("ArticlesForAdmin");
 		}
 
 		[HttpGet]
 		public async Task<IActionResult> EditAdminDescription(Guid id)
 		{
-			Article article = await _articleService.GetArticleById(id);
+			Article article = await _articleService.GetArticleByIdAsync(id);
 			var editArticle = new ManageArticlesViewModel
 			{
 				Id = article.Id,
@@ -149,13 +149,13 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpPost]
 		public async Task<IActionResult> EditAdminDescriptionPost(Guid id, string adminDescriptionForEdit)
 		{
-			Article article = await _articleService.GetArticleById(id);
+			Article article = await _articleService.GetArticleByIdAsync(id);
 			if (article != null)
 			{
 				article.IsEditNeeded = true;
 				article.IsEdited = false;
 				article.AdminDescriptionForEdit = adminDescriptionForEdit;
-				await _articleService.UpdateArticle(article);
+				await _articleService.UpdateArticleAsync(article);
 				return RedirectToAction("ArticlesForAdmin");
 			}
 			else 
@@ -167,10 +167,10 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpGet]
 		public async Task<IActionResult> EditArticle(Guid id)
 		{
-			var article = await _articleService.GetArticleById(id); 
+			var article = await _articleService.GetArticleByIdAsync(id); 
 			if (article != null) 
 			{
-				var articleType = await _articleTypeService.GetArticleTypeById((Guid)article.ArticleTypeId); 
+				var articleType = await _articleTypeService.GetArticleTypeByIdAsync((Guid)article.ArticleTypeId); 
 				var tempArticle = new ArticlesViewModel
 				{
 					Id = article.Id,
@@ -192,7 +192,7 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpPost]
 		public async Task<IActionResult> EditArticlePost(ArticlesViewModel model)
 		{
-			var article = await _articleService.GetArticleById(model.Id);
+			var article = await _articleService.GetArticleByIdAsync(model.Id);
 			if (ModelState.IsValid)
 			{
 				article.IsEdited = true;
@@ -200,7 +200,7 @@ namespace Online_magazine_Diploma.Controllers
 				article.Description = model.Description;
 				article.Text = model.Text;
 
-				await _articleService.UpdateArticle(article);
+				await _articleService.UpdateArticleAsync(article);
 				return RedirectToAction("Articles");
 			}
 			else 
@@ -212,9 +212,9 @@ namespace Online_magazine_Diploma.Controllers
 		[HttpPost]
 		public async Task<IActionResult> DeletePost(Guid id)
 		{
-			var article = await _articleService.GetArticleById(id);
+			var article = await _articleService.GetArticleByIdAsync(id);
 			article.IsDeleted = true;
-			await _articleService.UpdateArticle(article);
+			await _articleService.UpdateArticleAsync(article);
 			return Ok($"Статья \"{article.Name}\" удалена!!! ") ;
 		}
 	}

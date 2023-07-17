@@ -24,14 +24,14 @@ namespace Online_magazine_Diploma.Controllers
 
         public async Task<IActionResult> Index()
         {
-            IList<Article> articles = await _articleService.GetAllArticles();
+            IList<Article> articles = await _articleService.GetAllArticlesAsync();
 			// сортировка по просмотрам
 			articles = articles.OrderByDescending(x => x.CountOfViews).ToList();// сортировка по убыванию
 
 			IList<Article> articlesForTitel = new List<Article>();
             foreach (var article in articles)
             {
-                article.ArticleType = await _articleTypeService.GetArticleTypeById((Guid)article.ArticleTypeId);
+                article.ArticleType = await _articleTypeService.GetArticleTypeByIdAsync((Guid)article.ArticleTypeId);
                 if (article.ArticleType == null)
                 {
                     return BadRequest("Что-то пошло не так!!!");
@@ -42,7 +42,7 @@ namespace Online_magazine_Diploma.Controllers
                 }
             }
 
-			IList<Titel> titels = await _titelService.GetAllTitels();
+			IList<Titel> titels = await _titelService.GetAllTitelsAsync();
 			var titel = titels.Where(x => x.ActivateDate < DateTime.Now).MaxBy(x => x.ActivateDate);
 			if (titel != null)
             {
@@ -61,8 +61,8 @@ namespace Online_magazine_Diploma.Controllers
 
 		public async Task<IActionResult> Privacy()
         {
-            var articleTypes = await _articleTypeService.GetAllArticleTypes();
-            var articles = await _articleService.GetAllArticles();
+            var articleTypes = await _articleTypeService.GetAllArticleTypesAsync();
+            var articles = await _articleService.GetAllArticlesAsync();
             var articleTypesForModel = new List<ArticleType>();
 
             foreach (var articleType in articleTypes)
