@@ -2,7 +2,7 @@
 @using Online_magazine_Diploma.Models.ArticleModels;
 @model ReadArticlesViewModel
 
-<h1>@Model.Name</h1>
+<h1 class="Titel2">@Model.Name</h1>
 @if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
 {
 	<div>
@@ -16,7 +16,7 @@ else
 	<div>------------------------------------------------------</div>
 }
 
-<h5> @Model.Description </h5>
+<h5 class="mainArticleDescriptionBox"> @Model.Description </h5>
 
 <div>@Model.Text</div>
 
@@ -62,7 +62,4 @@ else
 			}
 		</div>
 	}
-	
-	
-	
 }

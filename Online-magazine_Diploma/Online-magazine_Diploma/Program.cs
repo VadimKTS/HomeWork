@@ -56,35 +56,6 @@ namespace Online_magazine_Diploma
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-			//-----------------
-			//app.MapGet("/login", async (HttpContext context) =>
-			//{
-			//	var claimsIdentity = new ClaimsIdentity("Undefined");
-			//	var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-			//	// установка аутентификационных куки
-			//	await context.SignInAsync(claimsPrincipal);
-			//	return Results.Redirect("/");
-			//});
-
-			//app.MapGet("/logout", async (HttpContext context) =>
-			//{
-			//	await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-			//	return "Данные удалены";
-			//});
-			//app.Map("/", (HttpContext context) =>
-			//{
-			//	var user = context.User.Identity;
-			//	if (user is not null && user.IsAuthenticated)
-			//	{
-			//		return $"Пользователь аутентифицирован. Тип аутентификации: {user.AuthenticationType}";
-			//	}
-			//	else
-			//	{
-			//		return "Пользователь НЕ аутентифицирован";
-			//	}
-			//});
-			//=====================
-
 			app.Run();
         }
     }

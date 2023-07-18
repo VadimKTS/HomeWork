@@ -5,10 +5,10 @@
 {
 	@if (articleType.Articles != null)
 	{
-	<h2>
-		<div>@articleType.Name</div>
-		<div>--------------------------------------------------------------------</div>
-	</h2>
+		<h2 class="mainBox">
+			<div class="mainArticleBox">@articleType.Name</div>
+			<div>--------------------------------------------------------------------</div>
+		</h2>
 		@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
 		{
 			<div>
@@ -23,13 +23,13 @@
 		}
 
 
-		<div>
+		<div class="mainBox">
 		@foreach (var article in articleType.Articles)
 		{
 			@if (article.IsApprovedForPublication && !article.IsDeleted) @*костыль*@
 			{
-				<h4><a asp-area="" asp-controller="User" asp-action="ReadArticle" asp-route-id="@article.Id"> @article.Name </a> </h4>
-				<div>@article.Description</div>
+				<div class="mainArticleBox"><a class="mainArticleBox" asp-area="" asp-controller="User" asp-action="ReadArticle" asp-route-id="@article.Id"> @article.Name </a> </div>
+				<div class="mainArticleDescriptionBox">@article.Description</div>
 			}
 		}
 	</div>

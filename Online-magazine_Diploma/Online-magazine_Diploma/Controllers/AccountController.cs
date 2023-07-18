@@ -20,14 +20,13 @@ namespace Online_magazine_Diploma.Controllers
 			_configuration = configuration;
 			_userService = userService;
 		}
-
+				
 		public IActionResult Login()
 		{
 			return View();
 		}
 
-
-		[AllowAnonymous]
+        [AllowAnonymous]
 		[HttpPost]
 		public async Task<IActionResult> LoginPost(LoginViewModel model)
 		{
