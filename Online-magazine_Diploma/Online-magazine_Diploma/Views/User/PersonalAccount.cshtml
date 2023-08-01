@@ -1,4 +1,6 @@
-﻿
+﻿@using Online_magazine_Diploma.Models.AccountModels;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <h1>Личный кабинет пользователя</h1>
 
 <p>@User.Identity.Name
@@ -37,15 +39,45 @@
 		{
 			@using (Html.BeginForm("BeVip", "Account", FormMethod.Get))
 			{
+				
 				<button type="submit"> Получить VIP статус </button>
 			}
+			<button data-modal-id="modal-1" class="open-modal">Получить VIP статус (modal)</button>
+
+			<div id="modal-1" class="modal">
+				<span class="modal-close">
+					<svg viewbox="0 0 40 40">
+						<path class="close-x" d="M 10,10 L 30,30 M 30,10 L 10,30" />
+					</svg>
+				</span>
+				<div>
+					@{
+						await Html.PartialAsync("BeVipPart");
+					}
+				</div>
+			</div>
 		}
 		else if (User.IsInRole("VipUser"))
 		{
 			@using (Html.BeginForm("BeVip", "Account", FormMethod.Get))
 			{
+				
 				<button type="submit"> Продлить VIP статус</button>
 			}
+			<button data-modal-id="modal-2" class="open-modal">Получить VIP статус (modal)</button>
+
+			<div id="modal-2" class="modal">
+				<span class="modal-close">
+					<svg viewbox="0 0 40 40">
+						<path class="close-x" d="M 10,10 L 30,30 M 30,10 L 10,30" />
+					</svg>
+				</span>
+				<div>
+					@{
+						await Html.PartialAsync("BeVipPart");
+					}
+				</div>
+			</div>
 		}
 	}
 </div>

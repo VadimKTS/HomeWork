@@ -36,7 +36,7 @@ namespace Online_magazine_Diploma.Controllers
                 {
                     return BadRequest("Что-то пошло не так!!!");
                 }
-                else if (!article.ArticleType.IsDeleted && !article.IsDeleted && article.IsApprovedForPublication && articlesForTitel.Count < 5)//изменить на переменную 
+                else if (!article.ArticleType.IsDeleted && !article.IsDeleted && article.IsApprovedForPublication && articlesForTitel.Count < 5)//изменить на переменную в titel
                 {
 					articlesForTitel.Add(article);
                 }

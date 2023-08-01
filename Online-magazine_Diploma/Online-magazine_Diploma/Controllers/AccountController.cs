@@ -119,7 +119,6 @@ namespace Online_magazine_Diploma.Controllers
 		}
 		//------------------------------------------------
 		[HttpGet]
-		//[Authorize]
 		public async Task<IActionResult> EditUser()
 		{
 			User user = await _userService.GetUserByEmailAsync(User.Identity.Name);
@@ -134,7 +133,6 @@ namespace Online_magazine_Diploma.Controllers
 
 
 		[HttpPost]
-		//[Authorize]
 		public async Task<IActionResult> EditUserPost(EditUserViewModel model)
 		{
 			User oldUser = await _userService.GetUserByEmailAsync(User.Identity.Name);

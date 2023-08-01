@@ -14,29 +14,25 @@
 	<div>
 		@Html.LabelFor(m => m.CreditCard, "Номер карты")
 		@Html.TextBoxFor(m => m.CreditCard)
-		@Html.FormatValue(Model.CreditCard, "0000-0000-0000-0000")
-		@Html.ValidationMessageFor(m => m.CreditCard)
+		@Html.ValidationMessageFor(m => m.CreditCard, "0000-0000-0000-0000")
 	</div>
 
 	<div>
 		@Html.LabelFor(m => m.CardHolderName, "Имя держателя карты")
 		@Html.TextBoxFor(m => m.CardHolderName)
-		@Html.FormatValue(Model.CardHolderName, "FIRSTNAME LASTNAME")
-		@Html.ValidationMessageFor(m => m.CardHolderName)
+		@Html.ValidationMessageFor(m => m.CardHolderName, "FIRSTNAME LASTNAME")
 	</div>
 
 	<div>
 		@Html.LabelFor(m => m.Expires, "Срок действия")
 		@Html.TextBoxFor(m => m.Expires)
-		@Html.FormatValue(Model.Expires, "MM/YY")
-		@Html.ValidationMessageFor(m => m.Expires)
+		@Html.ValidationMessageFor(m => m.Expires, "MM/YY")
 	</div>
 
 	<div>
 		@Html.LabelFor(m => m.CvvCode, "CVV")
 		@Html.PasswordFor(m => m.CvvCode)
-		@Html.FormatValue(Model.CvvCode, "***")
-		@Html.ValidationMessageFor(m => m.CvvCode)
+		@Html.ValidationMessageFor(m => m.CvvCode, "***")
 	</div>
 
 	<button type="submit"> Оплатить </button>

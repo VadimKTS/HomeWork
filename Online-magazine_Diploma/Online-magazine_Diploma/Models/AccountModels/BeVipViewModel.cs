@@ -4,28 +4,25 @@ namespace Online_magazine_Diploma.Models.AccountModels
 {
     public class BeVipViewModel
 	{
-        [Required]
-        //[RegularExpression(@"[A-Za-z0-9._%+-]" + @"[@]" + @"[A-Za-z0-9.-]" + @"[A-Za-z]{2,4}")]
-        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Введите Email")]
+		//[RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
+		[DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-		//[Required(ErrorMessage = "Введите пароль")]
-		//[DataType(DataType.Password)]
-		//public string PasswordHash { get; set; }//дописать донатилку!!!!!!!!!!!!!!!(@"[0-9]{2}+/.[0-9]{2}")
-
-		[Required]
+		[Required(ErrorMessage = "Введите номер карты")]
         [DataType(DataType.CreditCard)]
         public string CreditCard { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
-        public DateOnly Expires { get; set; }
+        [Required(ErrorMessage = "Введите дату окончания срока действия карты")]
+        //[DataType(DataType.Date)]
+        [RegularExpression(@"[0-9]{2}/[0-9]{2}")]
+        public string Expires { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите CVV. (На обратной стороне карты)")]
 		[RegularExpression(@"[0-9]{3}")]
         public string CvvCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите ИМЯ держателя карты.")]
 		[RegularExpression(@"[A-Za-z]{1,20}" + @" " + @"[A-Za-z]{1,20}")]
 		public string CardHolderName { get; set; }
 	}
