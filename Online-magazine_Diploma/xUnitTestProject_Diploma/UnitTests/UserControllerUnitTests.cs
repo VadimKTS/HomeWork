@@ -42,6 +42,7 @@ namespace xUnitTestProject_Diploma.UnitTests
 			var result = sut.AddCommentPost(testModel);
 			// Assert
 			Assert.NotNull(result);
+			Assert.True(result.IsCompleted);
 		}
 	}
 }

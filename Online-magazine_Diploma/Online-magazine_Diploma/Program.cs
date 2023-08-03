@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Online_magazine_Diploma.DataAccess;
 using Online_magazine_Diploma.DataAccess.DbPatterns;
 using Online_magazine_Diploma.DataAccess.DbPatterns.Interfaces;
 using Online_magazine_Diploma.Services.Interfaces;
 using Online_magazine_Diploma.Services.Service;
-using System.Security.Claims;
 
 namespace Online_magazine_Diploma
 {
@@ -20,13 +18,20 @@ namespace Online_magazine_Diploma
             // Add services to the container.
             string connection = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connection));
+			//swagger
+			builder.Services.AddControllers();
+			builder.Services.AddEndpointsApiExplorer();
+			builder.Services.AddSwaggerGen();
+
+			builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connection));
             builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
             builder.Services.AddTransient<IUserService, UserService>();
 			builder.Services.AddTransient<IArticleTypeService, ArticleTypeService>();
 			builder.Services.AddTransient<IArticleService, ArticleService>();
 			builder.Services.AddTransient<ITitelService, TitelService>();
 			builder.Services.AddTransient<ICommentService, CommentService>();
+
+			
 
 			// Аутентификация с помощью куки
 			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -44,7 +49,17 @@ namespace Online_magazine_Diploma
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseStaticFiles();
+
+			//swagger 
+			//localhost:5248/swagger/v1/swagger.json
+			//localhost:5248/swagger
+			if (app.Environment.IsDevelopment())
+			{
+				app.UseSwagger();
+				app.UseSwaggerUI();
+			}
+
+			app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -57,6 +72,7 @@ namespace Online_magazine_Diploma
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
 			app.Run();
-        }
+			
+		}
     }
 }

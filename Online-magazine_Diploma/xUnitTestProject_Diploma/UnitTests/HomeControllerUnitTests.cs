@@ -32,6 +32,7 @@ namespace xUnitTestProject_Diploma.UnitTests
 			var result = sut.Privacy();
 			// Assert
 			Assert.NotNull(result);
+			Assert.True(result.IsCompleted);
 		}
     }
 }

@@ -21,7 +21,11 @@ namespace Online_magazine_Diploma.Controllers
             _articleService = articleService;
             _articleTypeService = articleTypeService;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             IList<Article> articles = await _articleService.GetAllArticlesAsync();
@@ -59,6 +63,7 @@ namespace Online_magazine_Diploma.Controllers
             return BadRequest("Что-то пошло не так");
         }
 
+		[HttpGet]
 		public async Task<IActionResult> Privacy()
         {
             var articleTypes = await _articleTypeService.GetAllArticleTypesAsync();
