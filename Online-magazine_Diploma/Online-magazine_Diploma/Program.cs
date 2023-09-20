@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Online_magazine_Diploma.DataAccess;
 using Online_magazine_Diploma.DataAccess.DbPatterns;
 using Online_magazine_Diploma.DataAccess.DbPatterns.Interfaces;
@@ -21,7 +22,11 @@ namespace Online_magazine_Diploma
 			//swagger
 			builder.Services.AddControllers();
 			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+            builder.Services.AddMvcCore();
+            builder.Services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v2", new OpenApiInfo { Title = "MVCCallWebAPI", Version = "v2" });
+			});
 
 			builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connection));
             builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
@@ -56,7 +61,10 @@ namespace Online_magazine_Diploma
 			if (app.Environment.IsDevelopment())
 			{
 				app.UseSwagger();
-				app.UseSwaggerUI();
+				app.UseSwaggerUI(c =>
+				{
+					c.SwaggerEndpoint("/swagger/v2/swagger.json", "MVCCallWebAPI");
+				});
 			}
 
 			app.UseStaticFiles();
@@ -67,7 +75,9 @@ namespace Online_magazine_Diploma
 
 			app.UseAuthentication();
 
-			app.MapControllerRoute(
+            app.UseHttpsRedirection();
+
+            app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 

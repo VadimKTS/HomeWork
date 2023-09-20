@@ -25,6 +25,9 @@
                         </li>
                             @if (User.IsInRole("Administrator") || (User.IsInRole("Moderator")))
 	                    {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Swagger" asp-action="Index">Web API</a>
+                            </li>
                             <li class="nav-item2">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Administrator" asp-action="PersonalAccount"> Администраторская</a>
                             </li>

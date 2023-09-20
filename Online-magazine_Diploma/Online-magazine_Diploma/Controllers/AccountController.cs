@@ -10,6 +10,8 @@ using System.Security.Claims;
 
 namespace Online_magazine_Diploma.Controllers
 {
+	//[ApiController]
+	//[Route("[controller]")]
 	public class AccountController : Controller
 	{
 		private IConfiguration _configuration;
@@ -27,7 +29,7 @@ namespace Online_magazine_Diploma.Controllers
 		}
 
         [AllowAnonymous]
-		[HttpPost]
+		[HttpPost(Name = "Login")]
 		public async Task<IActionResult> LoginPost(LoginViewModel model)
 		{
 			if (ModelState.IsValid)
