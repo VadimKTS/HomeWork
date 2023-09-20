@@ -18,9 +18,9 @@ namespace xUnitTestProject_Diploma.UnitTests
 		{
 			// Arrange
 			var sut = new UserController( _userService, _articleService, _commentService );
-			var id = Guid.Parse("D60B91AA-E310-4F3E-A3D1-F3AE4212472F");// Guid из базы
-			// Act
-			var result = sut.ReadArticle(id);
+			var id = Guid.Parse("D60B91AA-E310-4F3E-A3D1-F3AE4212472F");// случайный Guid из базы
+            // Act
+            var result = sut.ReadArticle(id);
 			// Assert
 			Assert.NotNull(result);
 		}
@@ -35,8 +35,8 @@ namespace xUnitTestProject_Diploma.UnitTests
 				Id = Guid.NewGuid(),
 				Text = "Test",
 				CreatedDate = DateTime.Now,
-				ArticleId = Guid.Parse("D60B91AA-E310-4F3E-A3D1-F3AE4212472F"),// Guid из базы
-				UserId = Guid.Parse("21C8053D-8CF1-484B-8559-C3DE0DD037EF"),
+				ArticleId = Guid.Parse("D60B91AA-E310-4F3E-A3D1-F3AE4212472F"),// случайный Guid из базы
+                UserId = Guid.Parse("21C8053D-8CF1-484B-8559-C3DE0DD037EF"),
 		};
 			// Act
 			var result = sut.AddCommentPost(testModel);
