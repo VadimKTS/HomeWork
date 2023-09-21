@@ -108,18 +108,7 @@ namespace Online_magazine_Diploma.Controllers
 			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 			return RedirectToAction("PersonalAccount", "User");
 		}
-		//----------------------------------------------
-		private ClaimsIdentity Authenticate(User user)
-		{
-			var claims = new List<Claim>()
-			{
-				new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-				new Claim(ClaimsIdentity.DefaultRoleClaimType, user.UserRole.ToString())
-			};
-			return new ClaimsIdentity(claims, "ApplicationCookie",
-				ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-		}
-		//------------------------------------------------
+		
 		[HttpGet]
 		public async Task<IActionResult> EditUser()
 		{
@@ -191,5 +180,18 @@ namespace Online_magazine_Diploma.Controllers
 			}
 			return BadRequest("Что-то пошло не так!");
 		}
-	}
+
+        //---------------------------------------------- Аутентификация с помощью кукис
+        private ClaimsIdentity Authenticate(User user)
+        {
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.UserRole.ToString())
+            };
+            return new ClaimsIdentity(claims, "ApplicationCookie",
+                ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+        }
+        //------------------------------------------------
+    }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using NuGet.Protocol;
 using Online_magazine_Diploma.Controllers;
@@ -40,13 +41,15 @@ namespace xUnitTestProject_Diploma.UnitTests
         }
 
         [Fact]
-        public void Registration_NotNull_ReturnsResponse()
+        public void Registration_NotNull_ReturnsView()
         {
             // Arrange
-            var sut = new AccountController(_configuration, _userService);            
+            var sut = new AccountController(_configuration, _userService);
+            // Act
             var result = sut.Registration();
             // Assert
             Assert.NotNull(result);
+            Assert.True(result is ActionResult);
         }
 
         [Fact]
@@ -62,10 +65,87 @@ namespace xUnitTestProject_Diploma.UnitTests
                 Name = "testName",
                 PhoneNumber = "+375291234567",
             };
+            // Act
             var result = sut.RegistrationPost(model);
             // Assert
             Assert.NotNull(result);
             Assert.True(result.IsCompleted);
         }
-	}
+
+        [Fact]
+        public void LogoutPost_NotNull_ReturnsResponse() 
+        {
+            // Arrange
+            var sut = new AccountController(_configuration, _userService);
+            // Act
+            var result = sut.LogoutPost();
+            // Assert
+            Assert.NotNull(result);
+            Assert.True(result.IsCompleted);
+        }
+
+        [Fact]
+        public void EditUser_NotNull_ReturnsView()
+        {
+            // Arrange
+            var sut = new AccountController(_configuration, _userService);
+            // Act
+            var result = sut.EditUser();
+            // Assert
+            Assert.NotNull(result);
+            Assert.True(result.IsCompleted);
+            Assert.True(result is Task<IActionResult>);
+        }
+
+        [Fact]
+        public void EditUserPost_NotNull_ReturnsResponse()
+        {
+            // Arrange
+            var sut = new AccountController(_configuration, _userService);
+            var model = new EditUserViewModel() 
+            { 
+                Name = "testName", 
+                NewPassword = "qwerty", 
+                OldPassword = "qwerty123", 
+                PhoneNumber = "1234567890" 
+            };
+            // Act
+            var result = sut.EditUserPost(model);
+            // Assert
+            Assert.NotNull(result);
+            Assert.True(result.IsCompleted);
+        }
+
+        [Fact]
+        public void BeVip_NotNull_ReturnsView()
+        {
+            // Arrange
+            var sut = new AccountController(_configuration, _userService);
+            // Act
+            var result = sut.BeVip();
+            // Assert
+            Assert.NotNull(result);
+            Assert.True(result.IsCompleted);
+        }
+
+        [Fact]
+        public void BeVipPost_NotNull_ReturnsView()
+        {
+            // Arrange
+            var sut = new AccountController(_configuration, _userService);
+            var model = new BeVipViewModel()
+            {
+                CardHolderName = "Test",
+                CreditCard = "",
+                CvvCode = "1234567890",
+                Email = "",
+                Expires = "",
+            };
+            // Act
+            var result = sut.BeVipPost(model);
+            // Assert
+            Assert.NotNull(result);
+            Assert.True(result.IsCompleted);
+        }
+    }
 }
