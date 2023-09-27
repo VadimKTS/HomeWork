@@ -1,13 +1,8 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
-using NuGet.Protocol;
 using Online_magazine_Diploma.Controllers;
 using Online_magazine_Diploma.Models.AccountModels;
-using Online_magazine_Diploma.Models.CommentModels;
 using Online_magazine_Diploma.Services.Interfaces;
-using Online_magazine_Diploma.Services.Service;
 
 namespace xUnitTestProject_Diploma.UnitTests
 {

@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
 using Online_magazine_Diploma.Controllers;
 using Online_magazine_Diploma.Services.Interfaces;
-using Online_magazine_Diploma.Services.Service;
 
 namespace xUnitTestProject_Diploma.UnitTests
 {

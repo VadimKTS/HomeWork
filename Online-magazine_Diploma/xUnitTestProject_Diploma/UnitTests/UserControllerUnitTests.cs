@@ -1,9 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol;
 using Online_magazine_Diploma.Controllers;
 using Online_magazine_Diploma.Models.CommentModels;
 using Online_magazine_Diploma.Services.Interfaces;
-using Online_magazine_Diploma.Services.Service;
 
 namespace xUnitTestProject_Diploma.UnitTests
 {
@@ -14,6 +11,17 @@ namespace xUnitTestProject_Diploma.UnitTests
 		private ICommentService _commentService;
 
 		[Fact]
+		public void PersonalAccount_NotNull_ReturnsView()
+		{
+			// Arrange
+			var sut = new UserController(_userService, _articleService, _commentService);
+            // Act
+			var result = sut.PersonalAccount();
+            //Assert
+			Assert.NotNull(result);
+        }
+
+        [Fact]
 		public void ReadArticle_NotNull_ReturnsView()
 		{
 			// Arrange
