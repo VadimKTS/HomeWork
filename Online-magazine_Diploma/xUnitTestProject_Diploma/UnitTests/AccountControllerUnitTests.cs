@@ -8,14 +8,13 @@ namespace xUnitTestProject_Diploma.UnitTests
 {
     public class AccountControllerUnitTests
     {
-        private IConfiguration _configuration;
         private IUserService _userService;
 
         [Fact]
 		public void Login_NotNull_ReturnsView()
 		{
 			// Arrange
-			var sut = new AccountController(_configuration, _userService );
+			var sut = new AccountController(_userService );
 			// Act
 			var result = sut.Login();
 			// Assert
@@ -26,7 +25,7 @@ namespace xUnitTestProject_Diploma.UnitTests
         public void LoginPost_NotNull_ReturnsResponse()
         {
             // Arrange
-            var sut = new AccountController(_configuration, _userService);
+            var sut = new AccountController(_userService);
 			var model = new LoginViewModel() { Email = "testEmail@mail.com", Password = "qwerty"};
             // Act
             var result = sut.LoginPost(model);
@@ -39,7 +38,7 @@ namespace xUnitTestProject_Diploma.UnitTests
         public void Registration_NotNull_ReturnsView()
         {
             // Arrange
-            var sut = new AccountController(_configuration, _userService);
+            var sut = new AccountController(_userService);
             // Act
             var result = sut.Registration();
             // Assert
@@ -51,7 +50,7 @@ namespace xUnitTestProject_Diploma.UnitTests
 		public void RegistrationPost_NotNull_ReturnsResponse()
 		{
             // Arrange
-            var sut = new AccountController(_configuration, _userService);
+            var sut = new AccountController(_userService);
             var model = new RegistrationViewModel() 
             { 
                 Email = "testEmail@mail.com", 
@@ -71,7 +70,7 @@ namespace xUnitTestProject_Diploma.UnitTests
         public void LogoutPost_NotNull_ReturnsResponse() 
         {
             // Arrange
-            var sut = new AccountController(_configuration, _userService);
+            var sut = new AccountController(_userService);
             // Act
             var result = sut.LogoutPost();
             // Assert
@@ -83,7 +82,7 @@ namespace xUnitTestProject_Diploma.UnitTests
         public void EditUser_NotNull_ReturnsView()
         {
             // Arrange
-            var sut = new AccountController(_configuration, _userService);
+            var sut = new AccountController(_userService);
             // Act
             var result = sut.EditUser();
             // Assert
@@ -96,7 +95,7 @@ namespace xUnitTestProject_Diploma.UnitTests
         public void EditUserPost_NotNull_ReturnsResponse()
         {
             // Arrange
-            var sut = new AccountController(_configuration, _userService);
+            var sut = new AccountController(_userService);
             var model = new EditUserViewModel() 
             { 
                 Name = "testName", 
@@ -115,7 +114,7 @@ namespace xUnitTestProject_Diploma.UnitTests
         public void BeVip_NotNull_ReturnsView()
         {
             // Arrange
-            var sut = new AccountController(_configuration, _userService);
+            var sut = new AccountController(_userService);
             // Act
             var result = sut.BeVip();
             // Assert
@@ -127,7 +126,7 @@ namespace xUnitTestProject_Diploma.UnitTests
         public void BeVipPost_NotNull_ReturnsView()
         {
             // Arrange
-            var sut = new AccountController(_configuration, _userService);
+            var sut = new AccountController(_userService);
             var model = new BeVipViewModel()
             {
                 CardHolderName = "Test",

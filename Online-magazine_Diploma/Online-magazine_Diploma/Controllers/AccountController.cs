@@ -12,12 +12,10 @@ namespace Online_magazine_Diploma.Controllers
 {
     public class AccountController : Controller
     {
-        private IConfiguration _configuration;
         private IUserService _userService;
 
-        public AccountController(IConfiguration configuration, IUserService userService)
+        public AccountController(IUserService userService)
         {
-            _configuration = configuration;
             _userService = userService;
         }
 
