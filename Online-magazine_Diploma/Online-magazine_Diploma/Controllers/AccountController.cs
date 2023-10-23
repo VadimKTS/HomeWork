@@ -10,8 +10,6 @@ using System.Security.Claims;
 
 namespace Online_magazine_Diploma.Controllers
 {
-    //[ApiController]
-    //[Route("[controller]")]
     public class AccountController : Controller
     {
         private IConfiguration _configuration;
@@ -23,6 +21,7 @@ namespace Online_magazine_Diploma.Controllers
             _userService = userService;
         }
 
+        [HttpGet(Name = "Login")]
         public IActionResult Login()
         {
             return View();
@@ -64,7 +63,6 @@ namespace Online_magazine_Diploma.Controllers
         {
             return View();
         }
-
 
         [HttpPost(Name = "RegistrationPost")]
         [AllowAnonymous]
@@ -110,7 +108,7 @@ namespace Online_magazine_Diploma.Controllers
             return RedirectToAction("PersonalAccount", "User");
         }
 
-        [HttpGet]
+        [HttpGet(Name = "EditUser")]
         public async Task<IActionResult> EditUser()
         {
             User user = await _userService.GetUserByEmailAsync(User.Identity.Name);
@@ -121,8 +119,6 @@ namespace Online_magazine_Diploma.Controllers
             };
             return View(editUser);
         }
-
-
 
         [HttpPost(Name = "EditUserPost")]
         public async Task<IActionResult> EditUserPost(EditUserViewModel model)
@@ -184,6 +180,7 @@ namespace Online_magazine_Diploma.Controllers
         }
 
         //---------------------------------------------- Аутентификация с помощью кукис
+        [NonAction]
         private ClaimsIdentity Authenticate(User user)
         {
             var claims = new List<Claim>()

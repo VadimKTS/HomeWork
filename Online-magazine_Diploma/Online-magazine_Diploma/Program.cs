@@ -17,12 +17,7 @@ namespace Online_magazine_Diploma
             // Add services to the container.
             string connection = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddControllersWithViews();
-            //swagger
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddMvcCore();
-            builder.Services.AddSwaggerGen();
-
+            // Add services for DB
             builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connection));
             builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
             builder.Services.AddTransient<IUserService, UserService>();
@@ -48,12 +43,6 @@ namespace Online_magazine_Diploma
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-            }
-
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
             }
 
             app.UseStaticFiles();
